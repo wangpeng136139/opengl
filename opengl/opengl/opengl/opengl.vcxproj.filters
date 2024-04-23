@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\test2">
+      <UniqueIdentifier>{723d5685-4316-49d7-88b6-e4643536ad27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\draw_polygon">
+      <UniqueIdentifier>{867383a7-e472-40e4-be16-e7432ad61303}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\draw_polygon\test1">
+      <UniqueIdentifier>{4df5a389-cb3f-4391-8de7-af3b7cec164f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\draw_polygon\test4">
+      <UniqueIdentifier>{6259b254-013c-4ca7-a014-88d5f89d79ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\draw_polygon\test3">
+      <UniqueIdentifier>{0199e68c-7393-4f29-be72-b9a6548f618f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\draw_polygon\test2">
+      <UniqueIdentifier>{e58f80f9-056d-42ba-b020-652137d40fcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\texture">
+      <UniqueIdentifier>{3fa1bd5d-1613-434b-931c-ea6ccdc28436}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\texture">
+      <UniqueIdentifier>{f2106668-aae3-4ee1-8394-02ca8df653e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\testimage">
+      <UniqueIdentifier>{c4096acc-44a8-41d4-9bae-11fe5f0b6d27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\texture\data">
+      <UniqueIdentifier>{2c8a3db9-f70e-4807-b7dc-8b60b5afa6b1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\glad\glad.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="draw_base.cpp">
+      <Filter>源文件\draw_polygon\test1</Filter>
+    </ClCompile>
+    <ClCompile Include="draw_triangle.cpp">
+      <Filter>源文件\draw_polygon\test2</Filter>
+    </ClCompile>
+    <ClCompile Include="draw_quad.cpp">
+      <Filter>源文件\draw_polygon\test3</Filter>
+    </ClCompile>
+    <ClCompile Include="draw_cube.cpp">
+      <Filter>源文件\draw_polygon\test4</Filter>
+    </ClCompile>
+    <ClCompile Include="load_image.cpp">
+      <Filter>源文件\testimage</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>源文件\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="draw_cube_vertex.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="draw_cube_vertex3_3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Texture2D.h">
+      <Filter>头文件\texture</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
