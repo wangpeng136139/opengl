@@ -9,7 +9,8 @@ extern int draw_cube_vertex3_3();
 extern int draw_load_mesh_file();
 extern int draw_use_shader_file();
 extern int draw_use_material();
+extern int draw_mesh_render();
 int main(void)
 {
-    return draw_use_material();
+    return draw_mesh_render();
 }    
