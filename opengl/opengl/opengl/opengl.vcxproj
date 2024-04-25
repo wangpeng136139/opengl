@@ -133,20 +133,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\glad\glad.c" />
-    <ClCompile Include="draw_cube.cpp" />
-    <ClCompile Include="draw_cube_vertex.cpp" />
-    <ClCompile Include="draw_cube_vertex3_3.cpp" />
-    <ClCompile Include="draw_load_mesh_file.cpp" />
-    <ClCompile Include="load_image.cpp" />
+    <ClCompile Include="test\draw_cube.cpp" />
+    <ClCompile Include="test\draw_cube_vertex.cpp" />
+    <ClCompile Include="test\draw_cube_vertex3_3.cpp" />
+    <ClCompile Include="test\draw_load_mesh_file.cpp" />
+    <ClCompile Include="test\load_image.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="draw_base.cpp" />
-    <ClCompile Include="draw_triangle.cpp" />
-    <ClCompile Include="draw_quad.cpp" />
+    <ClCompile Include="test\draw_base.cpp" />
+    <ClCompile Include="test\draw_triangle.cpp" />
+    <ClCompile Include="test\draw_quad.cpp" />
     <ClCompile Include="common\render\mesh\Mesh.cpp" />
     <ClCompile Include="common\render\mesh\MeshFilter.cpp" />
     <ClCompile Include="common\render\shader\Shader.cpp" />
     <ClCompile Include="common\render\textures\Texture2D.cpp" />
-    <ClCompile Include="use_shader_file.cpp" />
+    <ClCompile Include="test\use_shader_file.cpp" />
     <ClCompile Include="common\render\vertex\Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>

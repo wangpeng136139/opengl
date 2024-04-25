@@ -51,28 +51,28 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="draw_base.cpp">
+    <ClCompile Include="test\draw_base.cpp">
       <Filter>源文件\draw_polygon\test1</Filter>
     </ClCompile>
-    <ClCompile Include="draw_triangle.cpp">
+    <ClCompile Include="test\draw_triangle.cpp">
       <Filter>源文件\draw_polygon\test2</Filter>
     </ClCompile>
-    <ClCompile Include="draw_quad.cpp">
+    <ClCompile Include="test\draw_quad.cpp">
       <Filter>源文件\draw_polygon\test3</Filter>
     </ClCompile>
-    <ClCompile Include="draw_cube.cpp">
+    <ClCompile Include="test\draw_cube.cpp">
       <Filter>源文件\draw_polygon\test4</Filter>
     </ClCompile>
-    <ClCompile Include="load_image.cpp">
+    <ClCompile Include="test\load_image.cpp">
       <Filter>源文件\testimage</Filter>
     </ClCompile>
     <ClCompile Include="common\render\textures\Texture2D.cpp">
       <Filter>源文件\texture</Filter>
     </ClCompile>
-    <ClCompile Include="draw_cube_vertex.cpp">
+    <ClCompile Include="test\draw_cube_vertex.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="draw_cube_vertex3_3.cpp">
+    <ClCompile Include="test\draw_cube_vertex3_3.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="common\render\mesh\Mesh.cpp">
@@ -84,13 +84,13 @@
     <ClCompile Include="common\render\mesh\MeshFilter.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="draw_load_mesh_file.cpp">
+    <ClCompile Include="test\draw_load_mesh_file.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="common\render\shader\Shader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="use_shader_file.cpp">
+    <ClCompile Include="test\use_shader_file.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
