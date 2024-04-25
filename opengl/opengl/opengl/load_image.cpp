@@ -11,7 +11,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "Texture2D.h"
+#include "common/render/textures/Texture2D.h"
 
 using namespace std;
 
@@ -317,7 +317,7 @@ void CreateTexture_load_image(std::string image_file_path)
 int draw_load_image(void)
 {
     init_opengl_load_image();
-    CreateTexture_load_image("1.png");
+    CreateTexture_load_image("resources/textures/1.png");
     compile_shader_load_image();
 
     //ªÒ»°shader Ù–‘ID

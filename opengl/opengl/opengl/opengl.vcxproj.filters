@@ -66,7 +66,7 @@
     <ClCompile Include="load_image.cpp">
       <Filter>源文件\testimage</Filter>
     </ClCompile>
-    <ClCompile Include="Texture2D.cpp">
+    <ClCompile Include="common\render\textures\Texture2D.cpp">
       <Filter>源文件\texture</Filter>
     </ClCompile>
     <ClCompile Include="draw_cube_vertex.cpp">
@@ -75,31 +75,45 @@
     <ClCompile Include="draw_cube_vertex3_3.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh.cpp">
+    <ClCompile Include="common\render\mesh\Mesh.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Vertex.cpp">
+    <ClCompile Include="common\render\vertex\Vertex.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MeshFilter.cpp">
+    <ClCompile Include="common\render\mesh\MeshFilter.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="draw_load_mesh_file.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="common\render\shader\Shader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="use_shader_file.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Texture2D.h">
+    <ClInclude Include="common\render\textures\Texture2D.h">
       <Filter>头文件\texture</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
+    <ClInclude Include="common\render\mesh\Mesh.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Vertex.h">
+    <ClInclude Include="common\render\vertex\Vertex.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MeshFilter.h">
+    <ClInclude Include="common\render\mesh\MeshFilter.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="common\render\shader\Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\textures\1.png">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>

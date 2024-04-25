@@ -12,8 +12,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <vector>
-#include "Texture2D.h"
-#include "Vertex.h"
+#include "common/render/textures/Texture2D.h"
+#include "common/render/vertex/Vertex.h"
 
 
 using namespace std;
@@ -457,7 +457,7 @@ int draw_cube_vertex3_3(void)
 {
     VertexRemoveDumplicate_cube_vertex3_3();
     init_opengl_cube_vertex3_3();
-    CreateTexturem_cube_vertex3_3("1.png");
+    CreateTexturem_cube_vertex3_3("resources/textures/1.png");
     GeneratorVertexArrayObject_cube_vertex3_3();
     GeneratorBufferObject_cube_vertex3_3();
     compile_shader_cube_vertex3_3();
