@@ -244,7 +244,7 @@ void init_opengl_load_image()
     }
 
     glfwMakeContextCurrent(window_load_image);
-    // 加载OpenGL 指针   
+    // 加载OpenGL 指针      
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
     //交换间隔表示交换缓冲区之前等待的帧数，通常称为vsync。
    //默认情况下，交换间隔为0，但因为屏幕每秒只更新60-75次，所以大部分的画面不会被显示。

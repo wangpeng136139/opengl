@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <vector>
 #include "Texture2D.h"
+#include "Vertex.h"
 
 
 using namespace std;
@@ -57,15 +58,9 @@ static const char* fragment_shader_text_cube_vertex3_3 =
 using namespace std;
 
 //顶点
-struct  Vertex_cube_vertex3_3
-{
-    glm::vec3 pos_;
-    glm::vec4 color_;
-    glm::vec2 uv_;
-};
 
 //原始顶点数组
-static const Vertex_cube_vertex3_3 kVertexs_cube_vertex3_3[36] = {
+static const Vertex kVertexs_cube_vertex3_3[36] = {
     //Front
     glm::vec3(-1.0f, -1.0f, 1.0f), glm::vec4(1.0f,1.0f,1.0f,1.0f),   glm::vec2(0.0f, 0.0f),
     glm::vec3(1.0f, -1.0f, 1.0f), glm::vec4(1.0f,1.0f,1.0f,1.0f),   glm::vec2(1.0f, 0.0f),
@@ -286,14 +281,14 @@ GLint mvp_location_cube_vertex3_3, vpos_location_cube_vertex3_3, vcol_location_c
 GLuint kVBO_cube_vertex3_3, kEBO_cube_vertex3_3, kVAO_cube_vertex3_3;
 Texture2D* texture2d_cube_vertex3_3 = nullptr;
 //去重的顶点Vector
-static vector<Vertex_cube_vertex3_3> kVertexRemoveDumplicateVectorv_cube_vertex3_3;
+static vector<Vertex> kVertexRemoveDumplicateVectorv_cube_vertex3_3;
 //顶点索引Vector
 static vector<unsigned short> kVertexIndexVector_cube_vertex3_3;
 
 //顶点去重
 static void VertexRemoveDumplicate_cube_vertex3_3() {
     for (int i = 0; i < 36; ++i) {
-        const Vertex_cube_vertex3_3& vertex = kVertexs_cube_vertex3_3[i];
+        const Vertex& vertex = kVertexs_cube_vertex3_3[i];
         //判断顶点是否存在
         int index = -1;
         for (int j = 0; j < kVertexRemoveDumplicateVectorv_cube_vertex3_3.size(); ++j) {
@@ -327,7 +322,7 @@ void GeneratorBufferObject_cube_vertex3_3()
     //将缓冲区对象指定为顶点缓冲区对象
     glBindBuffer(GL_ARRAY_BUFFER, kVBO_cube_vertex3_3);
     //上传顶点数据到缓冲区对象
-    glBufferData(GL_ARRAY_BUFFER, kVertexRemoveDumplicateVectorv_cube_vertex3_3.size() * sizeof(Vertex_cube_vertex3_3), &kVertexRemoveDumplicateVectorv_cube_vertex3_3[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, kVertexRemoveDumplicateVectorv_cube_vertex3_3.size() * sizeof(Vertex), &kVertexRemoveDumplicateVectorv_cube_vertex3_3[0], GL_STATIC_DRAW);
 
     //在GPU上创建缓冲区对象
     glGenBuffers(1, &kEBO_cube_vertex3_3);
@@ -341,11 +336,11 @@ void GeneratorBufferObject_cube_vertex3_3()
         //指定当前使用的VBO
         glBindBuffer(GL_ARRAY_BUFFER, kVBO_cube_vertex3_3);
         //将Shader变量(a_pos)和顶点坐标VBO句柄进行关联，最后的0表示数据偏移量。
-        glVertexAttribPointer(vpos_location_cube_vertex3_3, 3, GL_FLOAT, false, sizeof(Vertex_cube_vertex3_3), 0);
+        glVertexAttribPointer(vpos_location_cube_vertex3_3, 3, GL_FLOAT, false, sizeof(Vertex), 0);
         //启用顶点Shader属性(a_color)，指定与顶点颜色数据进行关联。
-        glVertexAttribPointer(vcol_location_cube_vertex3_3, 4, GL_FLOAT, false, sizeof(Vertex_cube_vertex3_3), (void*)(sizeof(float) * 3));
+        glVertexAttribPointer(vcol_location_cube_vertex3_3, 4, GL_FLOAT, false, sizeof(Vertex), (void*)(sizeof(float) * 3));
         //将Shader变量(a_uv)和顶点UV坐标VBO句柄进行关联。
-        glVertexAttribPointer(a_uv_location_cube_vertex3_3, 2, GL_FLOAT, false, sizeof(Vertex_cube_vertex3_3), (void*)(sizeof(float) * (3 + 4)));
+        glVertexAttribPointer(a_uv_location_cube_vertex3_3, 2, GL_FLOAT, false, sizeof(Vertex), (void*)(sizeof(float) * (3 + 4)));
 
         glEnableVertexAttribArray(vpos_location_cube_vertex3_3);
         glEnableVertexAttribArray(vcol_location_cube_vertex3_3);
@@ -512,13 +507,13 @@ int draw_cube_vertex3_3(void)
             glBindBuffer(GL_ARRAY_BUFFER, kVBO_cube_vertex3_3);
             //将Shader变量(a_pos)和顶点坐标VBO句柄进行关联，最后的0表示数据偏移量。
             glEnableVertexAttribArray(vpos_location_cube_vertex3_3);
-            glVertexAttribPointer(vpos_location_cube_vertex3_3, 3, GL_FLOAT, false, sizeof(Vertex_cube_vertex3_3), 0);
+            glVertexAttribPointer(vpos_location_cube_vertex3_3, 3, GL_FLOAT, false, sizeof(Vertex), 0);
             //启用顶点Shader属性(a_color)，指定与顶点颜色数据进行关联
             glEnableVertexAttribArray(vcol_location_cube_vertex3_3);
-            glVertexAttribPointer(vcol_location_cube_vertex3_3, 4, GL_FLOAT, false, sizeof(Vertex_cube_vertex3_3), (void*)(sizeof(float) * 3));
+            glVertexAttribPointer(vcol_location_cube_vertex3_3, 4, GL_FLOAT, false, sizeof(Vertex), (void*)(sizeof(float) * 3));
             //将Shader变量(a_uv)和顶点UV坐标VBO句柄进行关联，最后的0表示数据偏移量。
             glEnableVertexAttribArray(a_uv_location_cube_vertex3_3);
-            glVertexAttribPointer(a_uv_location_cube_vertex3_3, 2, GL_FLOAT, false, sizeof(Vertex_cube_vertex3_3), (void*)(sizeof(float) * (3 + 4)));
+            glVertexAttribPointer(a_uv_location_cube_vertex3_3, 2, GL_FLOAT, false, sizeof(Vertex), (void*)(sizeof(float) * (3 + 4)));
 
             //上传mvp矩阵
             glUniformMatrix4fv(mvp_location_cube_vertex3_3, 1, GL_FALSE, &mvp[0][0]);
