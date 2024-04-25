@@ -93,6 +93,12 @@
     <ClCompile Include="test\use_shader_file.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="common\render\material\Material.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test\use_material.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\render\textures\Texture2D.h">
@@ -108,6 +114,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\render\shader\Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render\material\Material.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

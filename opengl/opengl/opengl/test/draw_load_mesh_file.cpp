@@ -318,7 +318,7 @@ void GeneratorVertexArrayObject_load_mesh_file() {
 void GeneratorBufferObject_load_mesh_file()
 {
     MeshFilter *mesh = new MeshFilter();
-    mesh->LoadMesh("resources/mesh/2.mesh");
+    mesh->LoadMesh("resources/mesh/cube.mesh");
     //在GPU上创建缓冲区对象
     glGenBuffers(1, &kVBO_load_mesh_file);
     //将缓冲区对象指定为顶点缓冲区对象
@@ -459,7 +459,7 @@ int draw_load_mesh_file(void)
 {
 
     VertexRemoveDumplicate_load_mesh_file();
-    //MeshFilter::ExportMesh("2.mesh", kVertexRemoveDumplicateVectorv_load_mesh_file, kVertexIndexVector_load_mesh_file);
+    //MeshFilter::ExportMesh("cube.mesh", kVertexRemoveDumplicateVectorv_load_mesh_file, kVertexIndexVector_load_mesh_file);
     init_opengl_load_mesh_file();
     CreateTexturem_load_mesh_file("resources/textures/1.png");
     GeneratorVertexArrayObject_load_mesh_file();
