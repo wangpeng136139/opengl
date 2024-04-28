@@ -1,4 +1,14 @@
 #include "MeshRenderer.h"
+#include "../../component/Transform.h"
+#include "../../component/GameObject.h"
+#include <rttr/registration>
+
+using namespace rttr;
+RTTR_REGISTRATION
+{
+registration::class_<MeshRenderer>("MeshRenderer")
+.constructor<>()(rttr::policy::ctor::as_raw_ptr);
+}
 
 
 MeshRenderer::MeshRenderer() {
@@ -22,6 +32,11 @@ void MeshRenderer::SetMVP(glm::mat4 mvp) {
 }
 
 void MeshRenderer::Render() {
+    auto component_transform = game_object()->GetComponent("Transform");
+    auto transform = dynamic_cast<Transform*>(component_transform);
+    if (!transform) {
+        return;
+    }
     //获取`Shader`的`gl_program_id`，指定为目标Shader程序。
     GLuint gl_program_id = material_->shader()->GetProgramId();
 

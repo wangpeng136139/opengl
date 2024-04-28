@@ -106,13 +106,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;RTTR_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;rttr_core_d.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -135,6 +135,8 @@
     <ClCompile Include="..\..\glad\glad.c" />
     <ClCompile Include="common\render\material\Material.cpp" />
     <ClCompile Include="common\render\mesh\MeshRenderer.cpp" />
+    <ClCompile Include="common\component\Component.cpp" />
+    <ClCompile Include="common\component\GameObject.cpp" />
     <ClCompile Include="test\draw_cube.cpp" />
     <ClCompile Include="test\draw_cube_vertex.cpp" />
     <ClCompile Include="test\draw_cube_vertex3_3.cpp" />
@@ -150,8 +152,10 @@
     <ClCompile Include="common\render\textures\Texture2D.cpp" />
     <ClCompile Include="test\use_material.cpp" />
     <ClCompile Include="test\use_mesh_render.cpp" />
+    <ClCompile Include="test\use_mesh_render_gameobject.cpp" />
     <ClCompile Include="test\use_shader_file.cpp" />
     <ClCompile Include="common\render\vertex\Vertex.cpp" />
+    <ClCompile Include="common\component\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\render\mesh\Mesh.h" />
@@ -161,6 +165,9 @@
     <ClInclude Include="common\render\vertex\Vertex.h" />
     <ClInclude Include="common\render\material\Material.h" />
     <ClInclude Include="common\render\mesh\MeshRenderer.h" />
+    <ClInclude Include="common\component\Component.h" />
+    <ClInclude Include="common\component\GameObject.h" />
+    <ClInclude Include="common\component\Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\1.png" />

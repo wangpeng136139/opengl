@@ -1,4 +1,6 @@
 //main.cpp
+#include <rttr/type>
+
 extern int draw_base();
 extern int draw_triangle();
 extern int draw_quad();
@@ -10,7 +12,8 @@ extern int draw_load_mesh_file();
 extern int draw_use_shader_file();
 extern int draw_use_material();
 extern int draw_mesh_render();
+extern int draw_use_mesh_render_gameobject();
 int main(void)
 {
-    return draw_mesh_render();
+    draw_use_mesh_render_gameobject();
 }    

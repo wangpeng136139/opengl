@@ -3,10 +3,10 @@
 #include "../vertex/Vertex.h";
 #include <string>
 #include <vector>;
-
+#include "../../component/Component.h"
 using namespace std;
 
-class MeshFilter
+class MeshFilter:public Component
 {
 public:
 	static void ExportMesh(string save_path, vector<Vertex> kVertexRemoveDumplicateVector, vector<unsigned short> kVertexIndexVector);
