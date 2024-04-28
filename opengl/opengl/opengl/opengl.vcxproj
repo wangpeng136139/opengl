@@ -133,6 +133,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\glad\glad.c" />
+    <ClCompile Include="common\common\Application.cpp" />
+    <ClCompile Include="common\render\camera\Camera.cpp" />
     <ClCompile Include="common\render\material\Material.cpp" />
     <ClCompile Include="common\render\mesh\MeshRenderer.cpp" />
     <ClCompile Include="common\component\Component.cpp" />
@@ -150,6 +152,7 @@
     <ClCompile Include="common\render\mesh\MeshFilter.cpp" />
     <ClCompile Include="common\render\shader\Shader.cpp" />
     <ClCompile Include="common\render\textures\Texture2D.cpp" />
+    <ClCompile Include="test\use_camera.cpp" />
     <ClCompile Include="test\use_material.cpp" />
     <ClCompile Include="test\use_mesh_render.cpp" />
     <ClCompile Include="test\use_mesh_render_gameobject.cpp" />
@@ -158,6 +161,8 @@
     <ClCompile Include="common\component\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="common\common\Application.h" />
+    <ClInclude Include="common\render\camera\Camera.h" />
     <ClInclude Include="common\render\mesh\Mesh.h" />
     <ClInclude Include="common\render\mesh\MeshFilter.h" />
     <ClInclude Include="common\render\shader\Shader.h" />

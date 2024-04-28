@@ -43,7 +43,7 @@ Component* GameObject::AddComponent(std::string component_type_name) {
         std::vector<Component*> component_vec;
         component_vec.push_back(component);
         component_type_instance_map_[component_type_name] = component_vec;
-    }
+    }   
     else {
         component_type_instance_map_[component_type_name].push_back(component);
     }
