@@ -27,7 +27,7 @@ using namespace std;
 //顶点
 
 //原始顶点数组
-static const Vertex kVertexs_use_camera[36] = {
+static const Vertex kVertexs_use_more_camera[36] = {
     //Front
     glm::vec3(-1.0f, -1.0f, 1.0f), glm::vec4(1.0f,1.0f,1.0f,1.0f),   glm::vec2(0.0f, 0.0f),
     glm::vec3(1.0f, -1.0f, 1.0f), glm::vec4(1.0f,1.0f,1.0f,1.0f),   glm::vec2(1.0f, 0.0f),
@@ -84,7 +84,7 @@ static const Vertex kVertexs_use_camera[36] = {
     glm::vec3(-1.0f, -1.0f, 1.0f), glm::vec4(1.0f,1.0f,1.0f,1.0f),   glm::vec2(0.0f, 1.0f),
 };
 
-static const glm::vec3 kPositions_use_camera[36] = {
+static const glm::vec3 kPositions_use_more_camera[36] = {
     //Front
     glm::vec3(-1.0f, -1.0f, 1.0f),
     glm::vec3(1.0f, -1.0f, 1.0f),
@@ -129,7 +129,7 @@ static const glm::vec3 kPositions_use_camera[36] = {
     glm::vec3(-1.0f, -1.0f, 1.0f),
 };
 
-static const glm::vec4 kColors_use_camera[36] = {
+static const glm::vec4 kColors_use_more_camera[36] = {
     //Front
           glm::vec4(1, 0, 0, 1),
           glm::vec4(1, 0, 0, 1),
@@ -185,7 +185,7 @@ static const glm::vec4 kColors_use_camera[36] = {
           glm::vec4(0, 0, 1, 1),
 };
 
-static const glm::vec2 kUvs_use_camera[36] =
+static const glm::vec2 kUvs_use_more_camera[36] =
 {
     //Front
     glm::vec2(0.0f, 0.0f),
@@ -242,93 +242,24 @@ static const glm::vec2 kUvs_use_camera[36] =
     glm::vec2(0.0f, 1.0f),
 };
 
-GLFWwindow* window_use_camera;
-GLint mvp_location_use_camera, vpos_location_use_camera, vcol_location_use_camera, u_diffuse_texture_location_use_camera, a_uv_location_use_camera;
-GLuint kVBO_use_camera, kEBO_use_camera, kVAO_use_camera;
-Texture2D* texture2d_use_camera = nullptr;
-MeshFilter* mesh_load_use_camera = nullptr;
-//去重的顶点Vector
-static vector<Vertex> kVertexRemoveDumplicateVectorv_use_camera;
-//顶点索引Vector
-static vector<unsigned short> kVertexIndexVector_use_camera;
-
-//顶点去重
-static void VertexRemoveDumplicate_use_camera() {
-    for (int i = 0; i < 36; ++i) {
-        const Vertex& vertex = kVertexs_use_camera[i];
-        //判断顶点是否存在
-        int index = -1;
-        for (int j = 0; j < kVertexRemoveDumplicateVectorv_use_camera.size(); ++j) {
-            if (vertex.pos_ == kVertexRemoveDumplicateVectorv_use_camera[j].pos_ && vertex.color_ == kVertexRemoveDumplicateVectorv_use_camera[j].color_ && vertex.uv_ == kVertexRemoveDumplicateVectorv_use_camera[j].uv_) {
-                index = j;
-                break;
-            }
-        }
-        if (index < 0) {
-            //没找到就将目标顶点加入kVertexRemoveDumplicateVector，并记录索引为kVertexRemoveDumplicateVector.size()。
-            kVertexRemoveDumplicateVectorv_use_camera.push_back(vertex);
-            kVertexIndexVector_use_camera.push_back(kVertexRemoveDumplicateVectorv_use_camera.size() - 1);
-        }
-        else {
-            //找到了目标顶点，记录索引为kVertexRemoveDumplicateVector的位置。
-            kVertexIndexVector_use_camera.push_back(index);
-        }
-    }
-}
-/// 创建VAO
-void GeneratorVertexArrayObject_use_camera() {
-    glGenVertexArrays(1, &kVAO_use_camera);
-}
+GLFWwindow* window_use_more_camera;
+GLint mvp_location_use_more_camera, vpos_location_use_more_camera, vcol_location_use_more_camera, u_diffuse_texture_location_use_more_camera, a_uv_location_use_more_camera;
+GLuint kVBO_use_more_camera, kEBO_use_more_camera, kVAO_use_more_camera;
+Texture2D* texture2d_use_more_camera = nullptr;
 
 
-//创建VBO和EBO
-void GeneratorBufferObject_use_camera()
-{
-    //在GPU上创建缓冲区对象
-    glGenBuffers(1, &kVBO_use_camera);
-    //将缓冲区对象指定为顶点缓冲区对象
-    glBindBuffer(GL_ARRAY_BUFFER, kVBO_use_camera);
-    //上传顶点数据到缓冲区对象
-    glBufferData(GL_ARRAY_BUFFER, mesh_load_use_camera->GetMesh()->vertex_num_ * sizeof(Vertex), mesh_load_use_camera->GetMesh()->vertex_data_, GL_STATIC_DRAW);
 
-    //在GPU上创建缓冲区对象
-    glGenBuffers(1, &kEBO_use_camera);
-    //将缓冲区对象指定为顶点索引缓冲区对象
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, kEBO_use_camera);
-    //上传顶点索引数据到缓冲区对象
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh_load_use_camera->GetMesh()->vertex_index_num_ * sizeof(unsigned short), mesh_load_use_camera->GetMesh()->vertex_index_data_, GL_STATIC_DRAW);
-    //设置VAO
-    glBindVertexArray(kVAO_use_camera);
-    {
-        //指定当前使用的VBO
-        glBindBuffer(GL_ARRAY_BUFFER, kVBO_use_camera);
-        //将Shader变量(a_pos)和顶点坐标VBO句柄进行关联，最后的0表示数据偏移量。
-        glVertexAttribPointer(vpos_location_use_camera, 3, GL_FLOAT, false, sizeof(Vertex), 0);
-        //启用顶点Shader属性(a_color)，指定与顶点颜色数据进行关联。
-        glVertexAttribPointer(vcol_location_use_camera, 4, GL_FLOAT, false, sizeof(Vertex), (void*)(sizeof(float) * 3));
-        //将Shader变量(a_uv)和顶点UV坐标VBO句柄进行关联。
-        glVertexAttribPointer(a_uv_location_use_camera, 2, GL_FLOAT, false, sizeof(Vertex), (void*)(sizeof(float) * (3 + 4)));
-
-        glEnableVertexAttribArray(vpos_location_use_camera);
-        glEnableVertexAttribArray(vcol_location_use_camera);
-        glEnableVertexAttribArray(a_uv_location_use_camera);
-
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, kEBO_use_camera);
-    }
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-}
-
-static void error_callback_use_camera(int error, const char* description)
+static void error_callback_use_more_camera(int error, const char* description)
 {
     fprintf(stderr, "Error: %s\n", description);
 }
 
 
 
-void init_opengl_use_camera()
+void init_opengl_use_more_camera()
 {
     //设置错误回调
-    glfwSetErrorCallback(error_callback_use_camera);
+    glfwSetErrorCallback(error_callback_use_more_camera);
     /* 初始化glfw */
     if (!glfwInit())
         exit(EXIT_FAILURE);
@@ -340,14 +271,14 @@ void init_opengl_use_camera()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
     //创建窗口
-    window_use_camera = glfwCreateWindow(960, 640, "Simple example", NULL, NULL);
-    if (!window_use_camera)
+    window_use_more_camera = glfwCreateWindow(960, 640, "Simple example", NULL, NULL);
+    if (!window_use_more_camera)
     {
         glfwTerminate();
         exit(EXIT_FAILURE);
     }
 
-    glfwMakeContextCurrent(window_use_camera);
+    glfwMakeContextCurrent(window_use_more_camera);
     // 加载OpenGL 指针   
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
     //交换间隔表示交换缓冲区之前等待的帧数，通常称为vsync。
@@ -359,28 +290,28 @@ void init_opengl_use_camera()
 }
 //
 ///// 编译、链接Shader  
-//void compile_shader_use_camera()
+//void compile_shader_use_more_camera()
 //{
 //    Shader * shader = new Shader();
 //    shader->Find("resources/shader/Unlit");
-//    program_use_camera = shader->GetProgramId();
+//    program_use_more_camera = shader->GetProgramId();
 //}
 
 
 //创建Texture
-void CreateTexturem_use_camera(std::string image_file_path)
+void CreateTexturem_use_more_camera(std::string image_file_path)
 {
-    texture2d_use_camera = Texture2D::LoadFromFileTpc(image_file_path);
+    texture2d_use_more_camera = Texture2D::LoadFromFileTpc(image_file_path);
 }
 
 
-int draw_use_camera(void)
+int draw_use_more_camera(void)
 {
 
-    //VertexRemoveDumplicate_use_camera();
-   //MeshFilter::ExportMesh("cube.mesh", kVertexRemoveDumplicateVectorv_use_camera, kVertexIndexVector_use_camera);
-    init_opengl_use_camera();
-    /*CreateTexturem_use_camera("resources/textures/1.cpt");
+    //VertexRemoveDumplicate_use_more_camera();
+   //MeshFilter::ExportMesh("cube.mesh", kVertexRemoveDumplicateVectorv_use_more_camera, kVertexIndexVector_use_more_camera);
+    init_opengl_use_more_camera();
+    /*CreateTexturem_use_more_camera("resources/textures/1.cpt");
       string a = "resources/textures/1.png";
       string b  = "resources/textures/1.cpt";
       Texture2D::CompressImageFile(a,b);
@@ -392,50 +323,68 @@ int draw_use_camera(void)
     Material* material = new Material();
     material->Parse("resources/material/cube.mat");
 
-    mesh_load_use_camera = new MeshFilter();
-    mesh_load_use_camera->LoadMesh("resources/mesh/cube.mesh");
+    //挂上 MeshFilter 组件
+    auto mesh_filter = dynamic_cast<MeshFilter*>(obj->AddComponent("MeshFilter"));
+    mesh_filter->LoadMesh("model/cube.mesh");
 
 
     MeshRenderer* meshRender = dynamic_cast<MeshRenderer*>(obj->AddComponent("MeshRenderer"));
     meshRender->SetMaterial(material);
-    meshRender->SetMeshFilter(mesh_load_use_camera);
+    meshRender->SetMeshFilter(mesh_filter);
 
+    //创建相机1 GameObject
+    auto go_camera_1 = new GameObject("main_camera");
+    //挂上 Transform 组件
+    auto transform_camera_1 = dynamic_cast<Transform*>(go_camera_1->AddComponent("Transform"));
+    transform_camera_1->set_position(glm::vec3(0, 0, 10));
+    //挂上 Camera 组件
+    auto camera_1 = dynamic_cast<Camera*>(go_camera_1->AddComponent("Camera"));
 
-    GameObject* camera_obj = new GameObject("Main_Camera");
-    Transform * cameraTransform = dynamic_cast<Transform*>(camera_obj->AddComponent("Transform"));
-    cameraTransform->set_position(glm::vec3(0,0,10));
-    Camera* camera = dynamic_cast<Camera*>(camera_obj->AddComponent("Camera"));
+    //创建相机2 GameObject
+    //auto go_camera_2 = new GameObject("main_camera");
+    ////挂上 Transform 组件
+    //auto transform_camera_2 = dynamic_cast<Transform*>(go_camera_2->AddComponent("Transform"));
+    //transform_camera_2->set_position(glm::vec3(5, 0, 10));
+    ////挂上 Camera 组件
+    //auto camera_2 = dynamic_cast<Camera*>(go_camera_2->AddComponent("Camera"));
+    ////第二个相机不能清除之前的颜色。不然用第一个相机矩阵渲染的物体就被清除 没了。
+    //camera_2->set_clear_flag(GL_DEPTH_BUFFER_BIT);
 
-    while (!glfwWindowShouldClose(window_use_camera))
+    while (!glfwWindowShouldClose(window_use_more_camera))
     {
         float ratio;
         int width, height;
 
-        glfwGetFramebufferSize(window_use_camera, &width, &height);
+        glfwGetFramebufferSize(window_use_more_camera, &width, &height);
         glViewport(0, 0, width, height);
         ratio = width / (float)height;
+
+            
         //glm::mat4 trans = glm::translate(glm::vec3(0, 0, 0)); //不移动顶点坐标;
-        camera->SetView(glm::vec3(0,0,0),glm::vec3(0,1,0));
-        camera->SetProjection(60,ratio,1.1f,1000.0f);
-        camera->Clear();
+        camera_1->SetView(glm::vec3(0,0,0),glm::vec3(0,1,0));
+        camera_1->SetProjection(60,ratio,1.1f,1000.0f);
+     /*   camera_2->SetView(glm::vec3(transform_camera_2->position().x, 0, 0), glm::vec3(0, 1, 0));
+        camera_2->SetProjection(60, ratio, 1.1f, 1000.0f);*/
 
         static float rotate_eulerAngle = 0.f;
         rotate_eulerAngle += 0.1f;
         glm::vec3 rotation = transform->rotation();
         rotation.y = rotate_eulerAngle;
         transform->set_rotation(rotation);
+ 
+        //遍历所有相机，每个相机的View Projection，都用来做一次渲染。
+        Camera::Foreach([&]() {
+            meshRender->Render();
+        });
 
 
-        meshRender->SetView(camera->view_mat4());
-        meshRender->SetProjection(camera->projection_mat4());
-        meshRender->TestRender();
 
 
-        glfwSwapBuffers(window_use_camera);
+        glfwSwapBuffers(window_use_more_camera);
         glfwPollEvents();
     }
 
-    glfwDestroyWindow(window_use_camera);
+    glfwDestroyWindow(window_use_more_camera);
 
     glfwTerminate();
     exit(EXIT_SUCCESS);

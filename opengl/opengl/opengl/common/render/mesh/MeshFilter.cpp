@@ -2,7 +2,18 @@
 #include <fstream>
 #include <iostream>
 #include "vector";
+#include <rttr/registration>
 using namespace std;
+
+using namespace rttr;
+RTTR_REGISTRATION
+{
+    registration::class_<MeshFilter>("MeshFilter")
+            .constructor<>()(rttr::policy::ctor::as_raw_ptr);
+}
+
+
+
 //导出Mesh文件
 void MeshFilter::ExportMesh(string save_path, vector<Vertex> kVertexRemoveDumplicateVector, vector<unsigned short> kVertexIndexVector) {
     ofstream output_file_stream(save_path, ios::out | ios::binary);

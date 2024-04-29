@@ -156,6 +156,7 @@
     <ClCompile Include="test\use_material.cpp" />
     <ClCompile Include="test\use_mesh_render.cpp" />
     <ClCompile Include="test\use_mesh_render_gameobject.cpp" />
+    <ClCompile Include="test\use_more_camera.cpp" />
     <ClCompile Include="test\use_shader_file.cpp" />
     <ClCompile Include="common\render\vertex\Vertex.cpp" />
     <ClCompile Include="common\component\Transform.cpp" />

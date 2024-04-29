@@ -13,7 +13,9 @@ extern int draw_use_shader_file();
 extern int draw_use_material();
 extern int draw_mesh_render();
 extern int draw_use_mesh_render_gameobject();
+extern int draw_use_more_camera();
+extern int draw_use_camera();
 int main(void)
 {
-    draw_use_mesh_render_gameobject();
+    draw_use_more_camera();
 }    

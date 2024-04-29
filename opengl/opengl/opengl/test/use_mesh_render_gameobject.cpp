@@ -424,7 +424,7 @@ int draw_use_mesh_render_gameobject(void)
         glm::mat4 mvp = projection * view * model;
 
         meshRender->SetMVP(mvp);
-        meshRender->Render();
+        meshRender->MVPRender();
 
 
         glfwSwapBuffers(window_use_mesh_render_gameobject);

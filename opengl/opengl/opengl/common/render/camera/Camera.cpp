@@ -21,14 +21,29 @@ RTTR_REGISTRATION//×¢²á·´Éä
             .constructor<>()(rttr::policy::ctor::as_raw_ptr);
 }
 
+std::vector<Camera*> Camera::all_camera_;
+Camera* Camera::current_camera_;
 Camera::Camera() :clear_color_(49.f / 255, 77.f / 255, 121.f / 255, 1.f), clear_flag_(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) {
-
+    all_camera_.push_back(this);
 }
 
 
 Camera::~Camera() {
-
+    auto iter = std::find(all_camera_.begin(), all_camera_.end(), this);
+    if (iter != all_camera_.end()) {
+        all_camera_.erase(iter);
+    }
 }
+
+void Camera::Foreach(std::function<void()> func) {
+    for (auto iter = all_camera_.begin(); iter != all_camera_.end(); iter++) {
+        current_camera_ = *iter;
+        current_camera_->Clear();
+        func();
+    }
+}
+
+
 
 
 void Camera::SetView(const glm::vec3& cameraForward, const glm::vec3& cameraUp) {

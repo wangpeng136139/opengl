@@ -14,9 +14,9 @@ RTTR_REGISTRATION//×¢²á·´Éä
             .property("scale", &Transform::scale, &Transform::set_scale);
 }
 
-Transform::Transform() {
-
+Transform::Transform() :position_(0.f), rotation_(0.f), scale_(1.f) {
 }
+
 
 Transform::~Transform() {
 

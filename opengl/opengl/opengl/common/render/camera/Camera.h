@@ -1,6 +1,8 @@
 #pragma once
 #include "glm/glm.hpp"
 #include "../../component/Component.h"
+#include <vector>
+#include <functional>
 
 class Camera : public Component
 {
@@ -36,11 +38,22 @@ public:
     Camera();
 
     ~Camera();
+
+    /// 遍历所有Camera
+    /// \param func
+    static void Foreach(std::function<void()> func);
+
+    /// 遍历all_camera_时，轮到的那个Camera。
+    /// \return
+    static Camera* current_camera() { return current_camera_; }
 private:
 	glm::mat4 view_mat4_;//指定相机坐标和朝向
 	glm::mat4 projection_mat4_;//指定相机范围
 
 	glm::vec4 clear_color_;//清屏颜色
 	unsigned int clear_flag_;//刷新数据标志
+private:
+    static std::vector<Camera*> all_camera_;
+    static Camera* current_camera_;
 };
 

@@ -126,6 +126,9 @@
     <ClCompile Include="test\use_camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="test\use_more_camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\render\textures\Texture2D.h">
