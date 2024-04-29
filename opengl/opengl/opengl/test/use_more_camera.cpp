@@ -325,7 +325,7 @@ int draw_use_more_camera(void)
 
     //挂上 MeshFilter 组件
     auto mesh_filter = dynamic_cast<MeshFilter*>(obj->AddComponent("MeshFilter"));
-    mesh_filter->LoadMesh("model/cube.mesh");
+    mesh_filter->LoadMesh("resources/mesh/cube.mesh");
 
 
     MeshRenderer* meshRender = dynamic_cast<MeshRenderer*>(obj->AddComponent("MeshRenderer"));
@@ -341,14 +341,14 @@ int draw_use_more_camera(void)
     auto camera_1 = dynamic_cast<Camera*>(go_camera_1->AddComponent("Camera"));
 
     //创建相机2 GameObject
-    //auto go_camera_2 = new GameObject("main_camera");
-    ////挂上 Transform 组件
-    //auto transform_camera_2 = dynamic_cast<Transform*>(go_camera_2->AddComponent("Transform"));
-    //transform_camera_2->set_position(glm::vec3(5, 0, 10));
-    ////挂上 Camera 组件
-    //auto camera_2 = dynamic_cast<Camera*>(go_camera_2->AddComponent("Camera"));
-    ////第二个相机不能清除之前的颜色。不然用第一个相机矩阵渲染的物体就被清除 没了。
-    //camera_2->set_clear_flag(GL_DEPTH_BUFFER_BIT);
+    auto go_camera_2 = new GameObject("main_camera");
+    //挂上 Transform 组件
+    auto transform_camera_2 = dynamic_cast<Transform*>(go_camera_2->AddComponent("Transform"));
+    transform_camera_2->set_position(glm::vec3(5, 0, 10));
+    //挂上 Camera 组件
+    auto camera_2 = dynamic_cast<Camera*>(go_camera_2->AddComponent("Camera"));
+    //第二个相机不能清除之前的颜色。不然用第一个相机矩阵渲染的物体就被清除 没了。
+    camera_2->set_clear_flag(GL_DEPTH_BUFFER_BIT);
 
     while (!glfwWindowShouldClose(window_use_more_camera))
     {
@@ -363,8 +363,8 @@ int draw_use_more_camera(void)
         //glm::mat4 trans = glm::translate(glm::vec3(0, 0, 0)); //不移动顶点坐标;
         camera_1->SetView(glm::vec3(0,0,0),glm::vec3(0,1,0));
         camera_1->SetProjection(60,ratio,1.1f,1000.0f);
-     /*   camera_2->SetView(glm::vec3(transform_camera_2->position().x, 0, 0), glm::vec3(0, 1, 0));
-        camera_2->SetProjection(60, ratio, 1.1f, 1000.0f);*/
+        camera_2->SetView(glm::vec3(transform_camera_2->position().x, 0, 0), glm::vec3(0, 1, 0));
+        camera_2->SetProjection(60, ratio, 1.1f, 1000.0f);
 
         static float rotate_eulerAngle = 0.f;
         rotate_eulerAngle += 0.1f;
