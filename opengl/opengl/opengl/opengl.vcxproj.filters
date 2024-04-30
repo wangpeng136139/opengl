@@ -129,6 +129,12 @@
     <ClCompile Include="test\use_more_camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="common\eventstytem\Input.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test\use_key_mouse_control.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\render\textures\Texture2D.h">
@@ -165,6 +171,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\common\Application.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\eventstytem\Input.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\eventstytem\key_code.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

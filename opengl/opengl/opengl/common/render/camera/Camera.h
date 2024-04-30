@@ -35,6 +35,9 @@ public:
 
     void Clear();
 
+    unsigned char culling_mask() { return culling_mask_; }
+    void set_culling_mask(unsigned char culling_mask) { culling_mask_ = culling_mask; }
+
     Camera();
 
     ~Camera();
@@ -43,6 +46,11 @@ public:
     /// \param func
     static void Foreach(std::function<void()> func);
 
+    void set_depth(unsigned char depth);
+
+    unsigned char depth(){return depth_;}
+public:
+    static void Sort();
     /// 遍历all_camera_时，轮到的那个Camera。
     /// \return
     static Camera* current_camera() { return current_camera_; }
@@ -52,6 +60,8 @@ private:
 
 	glm::vec4 clear_color_;//清屏颜色
 	unsigned int clear_flag_;//刷新数据标志
+    unsigned char depth_;//排序深度
+    unsigned char culling_mask_;//剔除
 private:
     static std::vector<Camera*> all_camera_;
     static Camera* current_camera_;

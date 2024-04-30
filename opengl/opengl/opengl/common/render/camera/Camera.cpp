@@ -23,7 +23,7 @@ RTTR_REGISTRATION//×¢²á·´Éä
 
 std::vector<Camera*> Camera::all_camera_;
 Camera* Camera::current_camera_;
-Camera::Camera() :clear_color_(49.f / 255, 77.f / 255, 121.f / 255, 1.f), clear_flag_(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) {
+Camera::Camera() :clear_color_(49.f / 255, 77.f / 255, 121.f / 255, 1.f), clear_flag_(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT), culling_mask_(0x01) {
     all_camera_.push_back(this);
 }
 
@@ -44,6 +44,19 @@ void Camera::Foreach(std::function<void()> func) {
 }
 
 
+void Camera::set_depth(unsigned char depth) {
+    if (depth_ == depth) {
+        return;
+    }
+    depth_ = depth;
+    Sort();
+}
+/// °´ depth_ ÅÅÐò
+void Camera::Sort() {
+    std::sort(all_camera_.begin(), all_camera_.end(), [](Camera* a, Camera* b) {
+        return a->depth() < b->depth();
+        });
+}
 
 
 void Camera::SetView(const glm::vec3& cameraForward, const glm::vec3& cameraUp) {

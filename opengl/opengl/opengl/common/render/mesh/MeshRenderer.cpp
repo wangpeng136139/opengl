@@ -49,6 +49,15 @@ void MeshRenderer::Render() {
     if (current_camera == nullptr) {
         return;
     }
+
+    auto culling_mask = current_camera->culling_mask();
+    auto gameobject_layer = game_object()->layer();
+    //判断相机的 culling_mask 是否包含当前物体 layer
+    if ((culling_mask & gameobject_layer) == 0x00) {
+        return;
+    }
+
+
     glm::mat4 view = current_camera->view_mat4();
     glm::mat4 projection = current_camera->projection_mat4();
 

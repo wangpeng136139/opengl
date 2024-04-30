@@ -139,6 +139,7 @@
     <ClCompile Include="common\render\mesh\MeshRenderer.cpp" />
     <ClCompile Include="common\component\Component.cpp" />
     <ClCompile Include="common\component\GameObject.cpp" />
+    <ClCompile Include="common\eventstytem\Input.cpp" />
     <ClCompile Include="test\draw_cube.cpp" />
     <ClCompile Include="test\draw_cube_vertex.cpp" />
     <ClCompile Include="test\draw_cube_vertex3_3.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="common\render\shader\Shader.cpp" />
     <ClCompile Include="common\render\textures\Texture2D.cpp" />
     <ClCompile Include="test\use_camera.cpp" />
+    <ClCompile Include="test\use_key_mouse_control.cpp" />
     <ClCompile Include="test\use_material.cpp" />
     <ClCompile Include="test\use_mesh_render.cpp" />
     <ClCompile Include="test\use_mesh_render_gameobject.cpp" />
@@ -163,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\common\Application.h" />
+    <ClInclude Include="common\eventstytem\key_code.h" />
     <ClInclude Include="common\render\camera\Camera.h" />
     <ClInclude Include="common\render\mesh\Mesh.h" />
     <ClInclude Include="common\render\mesh\MeshFilter.h" />
@@ -174,6 +177,7 @@
     <ClInclude Include="common\component\Component.h" />
     <ClInclude Include="common\component\GameObject.h" />
     <ClInclude Include="common\component\Transform.h" />
+    <ClInclude Include="common\eventstytem\Input.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\1.png" />

@@ -4,11 +4,11 @@
 #include <rttr/registration>
 using namespace rttr;
 
-GameObject::GameObject() {
+GameObject::GameObject() :layer_(0x01) {
 
 }
    
-GameObject::GameObject(std::string name) {
+GameObject::GameObject(std::string name) :layer_(0x01) {
     set_name(name);
 }
 
