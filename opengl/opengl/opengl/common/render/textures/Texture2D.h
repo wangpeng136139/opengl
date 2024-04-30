@@ -28,11 +28,14 @@ class Texture2D
 private:
     Texture2D() {};
     ~Texture2D() {};
-
+public:
+    void UpdateSubImage(int x, int y, int width, int height, unsigned int client_format, unsigned int data_type, unsigned char* data);
 public:
     static Texture2D* LoadFromFile(std::string& image_file_path);//加载一个图片文件
     static Texture2D* LoadFromFileTpc(std::string& image_file_path);
     static void CompressImageFile(std::string& image_file_path, std::string& save_image_file_path);
+    static Texture2D* Create(unsigned short width, unsigned short height, unsigned int server_format, unsigned int client_format,
+        unsigned int data_type, unsigned char* data);     
 public:
     int width_;
     int height_;

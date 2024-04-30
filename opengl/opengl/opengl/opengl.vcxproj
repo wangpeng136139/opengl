@@ -112,7 +112,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;rttr_core_d.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;freetype.lib;rttr_core_d.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,6 +140,8 @@
     <ClCompile Include="common\component\Component.cpp" />
     <ClCompile Include="common\component\GameObject.cpp" />
     <ClCompile Include="common\eventstytem\Input.cpp" />
+    <ClCompile Include="common\render\font\Font.cpp" />
+    <ClCompile Include="common\common\Debug.cpp" />
     <ClCompile Include="test\draw_cube.cpp" />
     <ClCompile Include="test\draw_cube_vertex.cpp" />
     <ClCompile Include="test\draw_cube_vertex3_3.cpp" />
@@ -178,6 +180,8 @@
     <ClInclude Include="common\component\GameObject.h" />
     <ClInclude Include="common\component\Transform.h" />
     <ClInclude Include="common\eventstytem\Input.h" />
+    <ClInclude Include="common\render\font\Font.h" />
+    <ClInclude Include="common\common\Debug.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\1.png" />
