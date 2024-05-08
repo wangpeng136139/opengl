@@ -71,6 +71,14 @@ void GameObject::ForeachComponent(std::function<void(Component* component)> func
     }
 }
 
+void GameObject::Foreach(std::function<void(GameObject* game_object)> func) {
+    for (auto iter = game_object_list_.begin(); iter != game_object_list_.end(); iter++) {
+        auto game_object = *iter;
+        func(game_object);
+    }
+}
+
+
 
 Component* GameObject::GetComponent(std::string component_type_name) {
     if (component_type_instance_map_.size() < 1)

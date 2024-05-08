@@ -142,6 +142,7 @@
     <ClCompile Include="common\eventstytem\Input.cpp" />
     <ClCompile Include="common\render\font\Font.cpp" />
     <ClCompile Include="common\common\Debug.cpp" />
+    <ClCompile Include="common\common\Screen.cpp" />
     <ClCompile Include="test\draw_cube.cpp" />
     <ClCompile Include="test\draw_cube_vertex.cpp" />
     <ClCompile Include="test\draw_cube_vertex3_3.cpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="common\eventstytem\Input.h" />
     <ClInclude Include="common\render\font\Font.h" />
     <ClInclude Include="common\common\Debug.h" />
+    <ClInclude Include="common\common\Screen.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\1.png" />

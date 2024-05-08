@@ -144,6 +144,9 @@
     <ClCompile Include="test\use_font.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="common\common\Screen.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\render\textures\Texture2D.h">
@@ -192,6 +195,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\common\Debug.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\common\Screen.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
