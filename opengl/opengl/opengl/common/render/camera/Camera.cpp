@@ -22,6 +22,7 @@ RTTR_REGISTRATION//×¢²á·´Éä
 }
 
 std::vector<Camera*> Camera::all_camera_;
+
 Camera* Camera::current_camera_;
 Camera::Camera() :clear_color_(49.f / 255, 77.f / 255, 121.f / 255, 1.f), clear_flag_(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT), culling_mask_(0x01) {
     all_camera_.push_back(this);

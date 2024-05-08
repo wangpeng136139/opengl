@@ -156,6 +156,7 @@
     <ClCompile Include="common\render\shader\Shader.cpp" />
     <ClCompile Include="common\render\textures\Texture2D.cpp" />
     <ClCompile Include="test\use_camera.cpp" />
+    <ClCompile Include="test\use_font.cpp" />
     <ClCompile Include="test\use_key_mouse_control.cpp" />
     <ClCompile Include="test\use_material.cpp" />
     <ClCompile Include="test\use_mesh_render.cpp" />

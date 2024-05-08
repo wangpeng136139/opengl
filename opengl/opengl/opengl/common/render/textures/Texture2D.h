@@ -27,6 +27,7 @@ class Texture2D
 {
 private:
     Texture2D() {};
+public:
     ~Texture2D() {};
 public:
     void UpdateSubImage(int x, int y, int width, int height, unsigned int client_format, unsigned int data_type, unsigned char* data);

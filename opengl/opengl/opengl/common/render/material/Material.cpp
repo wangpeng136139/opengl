@@ -42,3 +42,14 @@ void Material::SetUniformMatrix4fv(std::string shader_property_name, float* poin
 void Material::SetUniform1i(std::string shader_property_name, int value) {
     uniform_1i_vec.push_back(std::make_pair(shader_property_name, value));
 }
+
+void Material::SetTexture(std::string property, Texture2D* texture2D) {
+    for (auto& pair : textures_) {
+        if (pair.first == property) {
+            delete(pair.second);
+            pair.second = texture2D;
+            break;
+        }
+    }
+}
+

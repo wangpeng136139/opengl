@@ -16,7 +16,8 @@ extern int draw_use_mesh_render_gameobject();
 extern int draw_use_more_camera();
 extern int draw_use_camera();
 extern int draw_use_key_mouse_control();
+extern int draw_use_font();
 int main(void)
 {
-    draw_use_key_mouse_control();
+    draw_use_font();
 }    

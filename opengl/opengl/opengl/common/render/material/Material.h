@@ -10,6 +10,7 @@ public:
 	void SetUniform1i(std::string shader_property_name, int value);
 	Shader* shader() { return shader_; }
 	std::vector<std::pair<std::string, Texture2D*>>& textures() { return textures_; }
+	void SetTexture(std::string property, Texture2D* texture2D);
 private:
 	Shader * shader_ = nullptr;
 	std::vector<std::pair<std::string, Texture2D*>> textures_;

@@ -141,6 +141,9 @@
     <ClCompile Include="common\common\Debug.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="test\use_font.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\render\textures\Texture2D.h">

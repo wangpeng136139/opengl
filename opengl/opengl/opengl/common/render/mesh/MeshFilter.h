@@ -12,6 +12,7 @@ public:
 	static void ExportMesh(string save_path, vector<Vertex> kVertexRemoveDumplicateVector, vector<unsigned short> kVertexIndexVector);
 	void LoadMesh(std::string mesh_file_path);
 	Mesh *GetMesh(){return mesh_;}
+	void CreateMesh(std::vector<Vertex>& vertex_data, std::vector<unsigned short>& vertex_index_data);
 private:
 	Mesh* mesh_;//Mesh∂‘œÛ
 };
