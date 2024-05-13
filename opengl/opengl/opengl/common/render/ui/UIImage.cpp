@@ -4,6 +4,14 @@
 #include "../material/Material.h"
 #include "../mesh/MeshRenderer.h"
 #include "../../renderdevice/RenderDevice.h"
+#include <rttr/registration>
+
+using namespace rttr;
+RTTR_REGISTRATION{
+    registration::class_<UIImage>("UIImage")
+            .constructor<>()(rttr::policy::ctor::as_raw_ptr);
+}
+
 
 void UIImage::OnPreRender()
 {

@@ -14,9 +14,14 @@ public:
     /// 渲染之后
     virtual void OnPostRender();
 
+
+    bool active() { return active_; }
+    void set_active(bool active) { active_ = active; }
+
     virtual void OnDisable();
     GameObject* game_object() { return game_object_; }
     virtual void set_game_object(GameObject* game_object) { game_object_ = game_object; }
 private:
+    bool active_;//是否激活
     GameObject* game_object_;
 };

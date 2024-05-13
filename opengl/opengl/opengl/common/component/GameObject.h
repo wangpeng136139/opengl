@@ -43,10 +43,14 @@ public:
     void ForeachComponent(std::function<void(Component* component)> func);
     unsigned char layer() { return layer_; }
     void set_layer(unsigned char layer) { layer_ = layer; }
+    bool active() { return active_; }
+    void set_active(bool active) { active_ = active; }
+
 private:
     unsigned char layer_;//将物体分不同的层，用于相机分层、物理碰撞分层等。
     std::string name_;
     std::unordered_map<std::string, std::vector<Component*>> component_type_instance_map_;
+    bool active_;//是否激活
 public:
     /// 遍历所有Camera
     /// \param func

@@ -170,6 +170,8 @@
     <ClCompile Include="common\component\Transform.cpp" />
     <ClCompile Include="common\render\ui\UIImage.cpp" />
     <ClCompile Include="common\render\ui\UIMask.cpp" />
+    <ClCompile Include="common\render\ui\UIText.cpp" />
+    <ClCompile Include="common\render\ui\UIButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\common\Application.h" />
@@ -193,6 +195,8 @@
     <ClInclude Include="common\renderdevice\RenderDevice.h" />
     <ClInclude Include="common\renderdevice\RenderDeviceOpenGL.h" />
     <ClInclude Include="common\render\ui\UIMask.h" />
+    <ClInclude Include="common\render\ui\UIText.h" />
+    <ClInclude Include="common\render\ui\UIButton.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\1.png" />

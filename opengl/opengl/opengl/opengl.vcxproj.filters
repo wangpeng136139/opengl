@@ -159,6 +159,12 @@
     <ClCompile Include="common\render\ui\UIMask.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="common\render\ui\UIText.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\render\ui\UIButton.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\render\textures\Texture2D.h">
@@ -222,6 +228,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\render\ui\UIMask.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render\ui\UIText.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render\ui\UIButton.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
