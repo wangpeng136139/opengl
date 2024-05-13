@@ -11,6 +11,8 @@
 #include<glm/gtx/euler_angles.hpp>
 #include "../common/Debug.h"
 #include "../common/Screen.h"
+#include "../renderdevice/RenderDevice.h"
+#include "../renderdevice/RenderDeviceOpenGL.h"
 
 std::string Application::app_data_;
 std::string Application::streammingAssetPath;
@@ -106,7 +108,21 @@ void Application::UpdateScreenSize() {
 
 void Application::Run()
 {
+    RenderDevice::Init(new RenderDeviceOpenGL());
+    while (!glfwWindowShouldClose(glfw_window_))
+    {
+        Update();
+        Render();
 
+        glfwSwapBuffers(glfw_window_);
+
+        glfwPollEvents();
+    }
+
+    glfwDestroyWindow(glfw_window_);
+
+    glfwTerminate();
+    exit(EXIT_SUCCESS);
 }
 
 void Application::Render()
@@ -127,23 +143,18 @@ void Application::Render()
         });
 }
 
+
 void Application::Update()
 {
-    while (!glfwWindowShouldClose(glfw_window_))
-    {
-        Update();
-        Render();
+    UpdateScreenSize();
 
-        glfwSwapBuffers(glfw_window_);
+    GameObject::Foreach([](GameObject* game_object) {
+        game_object->ForeachComponent([](Component* component) {
+            component->Update();
+            });
+        });
 
-        glfwPollEvents();
-        Input::Update();
-    }
-
-    glfwDestroyWindow(glfw_window_);
-
-    glfwTerminate();
-    exit(EXIT_SUCCESS);
+    Input::Update();
 }
 
 	

@@ -1,5 +1,6 @@
 //main.cpp
 #include <rttr/type>
+#include "common/common/Application.h"
 
 extern int draw_base();
 extern int draw_triangle();
@@ -18,6 +19,7 @@ extern int draw_use_camera();
 extern int draw_use_key_mouse_control();
 extern int draw_use_font();
 int main(void)
-{
-    draw_use_font();
+{ 
+	Application::Init();
+	Application::Run();
 }    

@@ -1,3 +1,3 @@
-<material shader="resources/shader/Unlit">
+<material shader="resources/shader/font">
     <texture name="u_diffuse_texture" image=""/>
 </material>

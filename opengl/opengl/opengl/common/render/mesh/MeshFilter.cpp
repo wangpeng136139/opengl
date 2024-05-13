@@ -12,7 +12,15 @@ RTTR_REGISTRATION
             .constructor<>()(rttr::policy::ctor::as_raw_ptr);
 }
 
+MeshFilter::MeshFilter()
+{
 
+}
+
+MeshFilter::~MeshFilter()
+{
+
+}
 
 //导出Mesh文件
 void MeshFilter::ExportMesh(string save_path, vector<Vertex> kVertexRemoveDumplicateVector, vector<unsigned short> kVertexIndexVector) {

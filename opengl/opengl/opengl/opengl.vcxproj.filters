@@ -147,6 +147,18 @@
     <ClCompile Include="common\common\Screen.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="common\render\ui\UIImage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderdevice\RenderDevice.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderdevice\RenderDeviceOpenGL.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\render\ui\UIMask.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\render\textures\Texture2D.h">
@@ -198,6 +210,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\common\Screen.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render\ui\UIImage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderdevice\RenderDevice.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderdevice\RenderDeviceOpenGL.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render\ui\UIMask.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

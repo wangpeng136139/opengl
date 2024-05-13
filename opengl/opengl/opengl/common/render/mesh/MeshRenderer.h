@@ -7,7 +7,7 @@ class MeshRenderer:public Component
 {
 public:
     MeshRenderer();
-    ~MeshRenderer();
+    ~MeshRenderer() override;
 
     void SetMaterial(Material* material);//ÉèÖÃMaterial
     Material* material() { return material_; }

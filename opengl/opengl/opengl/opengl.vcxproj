@@ -143,6 +143,8 @@
     <ClCompile Include="common\render\font\Font.cpp" />
     <ClCompile Include="common\common\Debug.cpp" />
     <ClCompile Include="common\common\Screen.cpp" />
+    <ClCompile Include="common\renderdevice\RenderDevice.cpp" />
+    <ClCompile Include="common\renderdevice\RenderDeviceOpenGL.cpp" />
     <ClCompile Include="test\draw_cube.cpp" />
     <ClCompile Include="test\draw_cube_vertex.cpp" />
     <ClCompile Include="test\draw_cube_vertex3_3.cpp" />
@@ -166,6 +168,8 @@
     <ClCompile Include="test\use_shader_file.cpp" />
     <ClCompile Include="common\render\vertex\Vertex.cpp" />
     <ClCompile Include="common\component\Transform.cpp" />
+    <ClCompile Include="common\render\ui\UIImage.cpp" />
+    <ClCompile Include="common\render\ui\UIMask.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\common\Application.h" />
@@ -185,6 +189,10 @@
     <ClInclude Include="common\render\font\Font.h" />
     <ClInclude Include="common\common\Debug.h" />
     <ClInclude Include="common\common\Screen.h" />
+    <ClInclude Include="common\render\ui\UIImage.h" />
+    <ClInclude Include="common\renderdevice\RenderDevice.h" />
+    <ClInclude Include="common\renderdevice\RenderDeviceOpenGL.h" />
+    <ClInclude Include="common\render\ui\UIMask.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\1.png" />

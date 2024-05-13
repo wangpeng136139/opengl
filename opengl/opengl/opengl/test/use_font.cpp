@@ -376,40 +376,54 @@ void CreateTexturem_use_font(std::string image_file_path)
     texture2d_use_font = Texture2D::LoadFromFileTpc(image_file_path);
 }
 
-MeshRenderer * CreateFont_use_font()
+std::vector<MeshRenderer *> CreateFont_use_font()
 {
-    vector<Vertex> vertex_vector = {
-          { {-1.0f, -1.0f, 1.0f}, {1.0f,1.0f,1.0f,1.0f},   {0.0f, 0.0f} },
-          { { 1.0f, -1.0f, 1.0f}, {1.0f,1.0f,1.0f,1.0f},   {1.0f, 0.0f} },
-          { { 1.0f,  1.0f, 1.0f}, {1.0f,1.0f,1.0f,1.0f},   {1.0f, 1.0f} },
-          { {-1.0f,  1.0f, 1.0f}, {1.0f,1.0f,1.0f,1.0f},   {0.0f, 1.0f} }
-    };
-    vector<unsigned short> index_vector = {
-            0,1,2,
-            0,2,3
-    };
-    //创建模型 GameObject
-    auto go = new GameObject("SOURCEHANSANSCN-HEAVY");
-    go->set_layer(0x01);
-    //挂上 Transform 组件
-    auto transform = dynamic_cast<Transform*>(go->AddComponent("Transform"));
-    transform->set_position({ 2.f,0.f,0.f });
-    //挂上 MeshFilter 组件
-    auto mesh_filter = dynamic_cast<MeshFilter*>(go->AddComponent("MeshFilter"));
-    mesh_filter->CreateMesh(vertex_vector, index_vector);
-    //创建 Material
-    auto material = new Material();//设置材质
-    material->Parse("resources/material/font.mat");
-    //挂上 MeshRenderer 组件
-    auto mesh_renderer = dynamic_cast<MeshRenderer*>(go->AddComponent("MeshRenderer"));
-    mesh_renderer->SetMaterial(material);
-    mesh_renderer->SetMeshFilter(mesh_filter);
     //生成文字贴图
-    Font* font = Font::LoadFromFile("resources/font/SOURCEHANSANSCN-HEAVY.OTF", 500);
-    font->LoadCharacter('A');
-    //使用文字贴图
-    material->SetTexture("u_diffuse_texture", font->font_texture());
-    return mesh_renderer;
+    std::vector<MeshRenderer*> vec;
+    Font* font = Font::LoadFromFile("resources/font/SOURCEHANSANSCN-HEAVY.OTF", 20);
+    std::string str = "Captain";
+    std::vector<Font::Character*> character_vec=font->LoadStr(str);
+    for (auto character : character_vec)
+    {
+        int offset_x = 0;
+        offset_x += 2;
+        //因为FreeType生成的bitmap是上下颠倒的，所以这里UV坐标也要做对应翻转，将左上角作为零点。
+        vector<Vertex> vertex_vector = {
+                {{-1.0f + offset_x, 2.0f, 1.0f}, {1.0f,0.0f,0.0f,1.0f},   {character->left_top_x_, character->right_bottom_y_}},
+                {{ 1.0f + offset_x, 2.0f, 1.0f}, {1.0f,0.0f,0.0f,1.0f},   {character->right_bottom_x_, character->right_bottom_y_}},
+                {{ 1.0f + offset_x,  4.0f, 1.0f}, {0.0f,1.0f,0.0f,1.0f},   {character->right_bottom_x_, character->left_top_y_}},
+                {{-1.0f + offset_x,  4.0f, 1.0f}, {0.0f,1.0f,0.0f,1.0f},   {character->left_top_x_, character->left_top_y_}}
+        };
+        vector<unsigned short> index_vector = {
+                0,1,2,
+                0,2,3
+        };
+        //创建模型 GameObject
+        auto go = new GameObject("SOURCEHANSANSCN-HEAVY");
+        go->set_layer(0x01);
+        //挂上 Transform 组件
+        auto transform = dynamic_cast<Transform*>(go->AddComponent("Transform"));
+        transform->set_position({ 2.f,0.f,0.f });
+        //挂上 MeshFilter 组件
+        auto mesh_filter = dynamic_cast<MeshFilter*>(go->AddComponent("MeshFilter"));
+        mesh_filter->CreateMesh(vertex_vector, index_vector);
+        //创建 Material
+        auto material = new Material();//设置材质
+        material->Parse("resources/material/font.mat");
+        //挂上 MeshRenderer 组件
+        auto mesh_renderer = dynamic_cast<MeshRenderer*>(go->AddComponent("MeshRenderer"));
+        mesh_renderer->SetMaterial(material);
+        mesh_renderer->SetMeshFilter(mesh_filter);
+
+        //使用文字贴图
+        material->SetTexture("u_diffuse_texture", font->font_texture());
+
+        vec.push_back(mesh_renderer);
+    }
+
+
+  
+    return vec;
 }
 
 int draw_use_font(void)
@@ -441,7 +455,7 @@ int draw_use_font(void)
     Camera* camera = dynamic_cast<Camera*>(camera_obj->AddComponent("Camera"));
 
 
-    auto font = CreateFont_use_font();
+    auto font_vec = CreateFont_use_font();
     while (!glfwWindowShouldClose(window_use_font))
     {
         float ratio;
@@ -466,9 +480,13 @@ int draw_use_font(void)
         meshRender->SetProjection(camera->projection_mat4());
         meshRender->TestRender();
 
-        font->SetView(camera->view_mat4());
-        font->SetProjection(camera->projection_mat4());
-        font->TestRender();
+        for (auto font : font_vec)
+        {
+            font->SetView(camera->view_mat4());
+            font->SetProjection(camera->projection_mat4());
+            font->TestRender();
+        }
+
 
 
         glfwSwapBuffers(window_use_font);

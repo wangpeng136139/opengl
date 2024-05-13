@@ -6,7 +6,7 @@
 class Transform : public Component {
 public:
     Transform();
-    ~Transform();
+    ~Transform() override;
     glm::vec3 position() const { return position_; }
     glm::vec3 rotation() const { return rotation_; }
     glm::vec3 scale() const { return scale_; }

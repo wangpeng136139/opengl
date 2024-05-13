@@ -21,8 +21,6 @@
 using namespace std;
 
 
-using namespace std;
-
 //顶点
 
 //原始顶点数组

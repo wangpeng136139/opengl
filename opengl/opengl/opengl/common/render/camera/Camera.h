@@ -40,7 +40,7 @@ public:
 
     Camera();
 
-    ~Camera();
+    ~Camera() override;
 
     /// ±éÀúËùÓĞCamera
     /// \param func

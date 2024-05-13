@@ -9,6 +9,8 @@ using namespace std;
 class MeshFilter:public Component
 {
 public:
+	MeshFilter();
+	~MeshFilter() override;
 	static void ExportMesh(string save_path, vector<Vertex> kVertexRemoveDumplicateVector, vector<unsigned short> kVertexIndexVector);
 	void LoadMesh(std::string mesh_file_path);
 	Mesh *GetMesh(){return mesh_;}

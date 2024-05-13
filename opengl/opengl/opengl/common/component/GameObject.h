@@ -17,7 +17,7 @@ class GameObject {
 public:
     GameObject();
     GameObject(std::string name);
-    ~GameObject();
+    virtual ~GameObject();
 
     std::string& name() { return name_; }
     void set_name(std::string name) { name_ = name; }
