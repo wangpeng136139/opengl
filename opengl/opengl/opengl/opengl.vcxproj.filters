@@ -165,6 +165,27 @@
     <ClCompile Include="common\render\ui\UIButton.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="common\sound\core\AudioClip.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\sound\core\AudioCore.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\sound\core\AudioListener.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\sound\core\AudioSource.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\sound\studio\AudioStudioEvent.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\sound\studio\AudioStudio.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\sound\Audio.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\render\textures\Texture2D.h">
@@ -234,6 +255,27 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\render\ui\UIButton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\sound\core\AudioClip.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\sound\core\AudioCore.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\sound\core\AudioListener.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\sound\core\AudioSource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\sound\studio\AudioStudioEvent.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\sound\studio\AudioStudio.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\sound\Audio.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

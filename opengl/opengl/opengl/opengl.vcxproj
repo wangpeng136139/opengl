@@ -106,13 +106,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;RTTR_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;USING_EASY_PROFILER;_CONSOLE;RTTR_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;freetype.lib;rttr_core_d.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;freetype.lib;rttr_core_d.lib;opengl32.lib;fmod_vc.lib;fmodL_vc.lib;fmodstudio_vc.lib;easy_profiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,6 +133,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\glad\glad.c" />
+    <ClCompile Include="common\sound\Audio.cpp" />
+    <ClCompile Include="common\sound\studio\AudioStudio.cpp" />
+    <ClCompile Include="common\sound\studio\AudioStudioEvent.cpp" />
+    <ClCompile Include="common\sound\core\AudioSource.cpp" />
+    <ClCompile Include="common\sound\core\AudioListener.cpp" />
+    <ClCompile Include="common\sound\core\AudioCore.cpp" />
+    <ClCompile Include="common\sound\core\AudioClip.cpp" />
     <ClCompile Include="common\common\Application.cpp" />
     <ClCompile Include="common\render\camera\Camera.cpp" />
     <ClCompile Include="common\render\material\Material.cpp" />
@@ -174,6 +181,13 @@
     <ClCompile Include="common\render\ui\UIButton.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="common\sound\Audio.h" />
+    <ClInclude Include="common\sound\studio\AudioStudio.h" />
+    <ClInclude Include="common\sound\studio\AudioStudioEvent.h" />
+    <ClInclude Include="common\sound\core\AudioSource.h" />
+    <ClInclude Include="common\sound\core\AudioListener.h" />
+    <ClInclude Include="common\sound\core\AudioCore.h" />
+    <ClInclude Include="common\sound\core\AudioClip.h" />
     <ClInclude Include="common\common\Application.h" />
     <ClInclude Include="common\eventstytem\key_code.h" />
     <ClInclude Include="common\render\camera\Camera.h" />

@@ -2,6 +2,7 @@
 #include <rttr/type>
 #include "common/common/Application.h"
 
+
 extern int draw_base();
 extern int draw_triangle();
 extern int draw_quad();

@@ -12,6 +12,7 @@ public:
     static void Run();
 	static void Render();
 	static void Update();
+	static void FixedUpdate();
 	static void UpdateScreenSize();
 	static void set_data_path(std::string data_path) { app_data_ = data_path; }
 public:

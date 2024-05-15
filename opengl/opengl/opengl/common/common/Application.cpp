@@ -9,10 +9,13 @@
 #include<glm/gtc/matrix_transform.hpp>
 #include<glm/gtx/transform2.hpp>
 #include<glm/gtx/euler_angles.hpp>
+#include <easy/profiler.h>
 #include "../common/Debug.h"
 #include "../common/Screen.h"
 #include "../renderdevice/RenderDevice.h"
 #include "../renderdevice/RenderDeviceOpenGL.h"
+#include "../sound/Audio.h"
+
 
 std::string Application::app_data_;
 std::string Application::streammingAssetPath;
@@ -64,6 +67,9 @@ static void error_callback(int error, const char* description)
 
 void Application::Init()
 {
+    EASY_MAIN_THREAD;
+    profiler::startListen();// 启动profiler服务器，等待gui连接。
+    RenderDevice::Init(new RenderDeviceOpenGL());
     glfwSetErrorCallback(error_callback);
     if (!glfwInit())
     {
@@ -108,25 +114,38 @@ void Application::UpdateScreenSize() {
 
 void Application::Run()
 {
-    RenderDevice::Init(new RenderDeviceOpenGL());
-    while (!glfwWindowShouldClose(glfw_window_))
+
+    while (true) 
     {
-        Update();
-        Render();
+        EASY_BLOCK("Frame") {
+        if (!glfwWindowShouldClose(glfw_window_))
+        {
+            Update();
+            Render();
 
-        glfwSwapBuffers(glfw_window_);
-
-        glfwPollEvents();
+            glfwSwapBuffers(glfw_window_);   
+            EASY_BLOCK("glfwPollEvents")
+            {
+                glfwPollEvents();
+            }
+            EASY_END_BLOCK
+        }
+        EASY_END_BLOCK
     }
-
+   }
     glfwDestroyWindow(glfw_window_);
 
     glfwTerminate();
     exit(EXIT_SUCCESS);
 }
 
+void Application::FixedUpdate()
+{
+    EASY_FUNCTION(profiler::colors::Magenta); // 标记函数
+}
 void Application::Render()
 {
+    EASY_FUNCTION(profiler::colors::Magenta); // 标记函数
     //遍历所有相机，每个相机的View Projection，都用来做一次渲染。
     Camera::Foreach([&]() {
         GameObject::Foreach([](GameObject* game_object) {
@@ -146,6 +165,7 @@ void Application::Render()
 
 void Application::Update()
 {
+    EASY_FUNCTION(profiler::colors::Magenta); // 标记函数
     UpdateScreenSize();
 
     GameObject::Foreach([](GameObject* game_object) {
@@ -155,6 +175,7 @@ void Application::Update()
         });
 
     Input::Update();
+    Audio::Update();
 }
 
 	
