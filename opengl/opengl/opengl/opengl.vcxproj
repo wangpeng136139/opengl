@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -106,13 +106,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;USING_EASY_PROFILER;_CONSOLE;RTTR_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>_DEBUG;USING_EASY_PROFILER;_CONSOLE;RTTR_DLL;GLM_ENABLE_EXPERIMENTAL;FBXSDK_SHARED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;freetype.lib;rttr_core_d.lib;opengl32.lib;fmod_vc.lib;fmodL_vc.lib;fmodstudio_vc.lib;easy_profiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;freetype.lib;rttr_core_d.lib;opengl32.lib;fmod_vc.lib;fmodL_vc.lib;fmodstudio_vc.lib;easy_profiler.lib;alembic.lib;libfbxsdk.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,6 +133,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\glad\glad.c" />
+    <ClCompile Include="common\animation\Animation.cpp" />
+    <ClCompile Include="common\animation\AnimationClip.cpp" />
     <ClCompile Include="common\sound\Audio.cpp" />
     <ClCompile Include="common\sound\studio\AudioStudio.cpp" />
     <ClCompile Include="common\sound\studio\AudioStudioEvent.cpp" />
@@ -152,6 +154,8 @@
     <ClCompile Include="common\common\Screen.cpp" />
     <ClCompile Include="common\renderdevice\RenderDevice.cpp" />
     <ClCompile Include="common\renderdevice\RenderDeviceOpenGL.cpp" />
+    <ClCompile Include="common\render\mesh\SkinnedMeshRenderer.cpp" />
+    <ClCompile Include="common\importer\FbxLoad.cpp" />
     <ClCompile Include="test\draw_cube.cpp" />
     <ClCompile Include="test\draw_cube_vertex.cpp" />
     <ClCompile Include="test\draw_cube_vertex3_3.cpp" />
@@ -179,8 +183,11 @@
     <ClCompile Include="common\render\ui\UIMask.cpp" />
     <ClCompile Include="common\render\ui\UIText.cpp" />
     <ClCompile Include="common\render\ui\UIButton.cpp" />
+    <ClCompile Include="common\common\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="common\animation\Animation.h" />
+    <ClInclude Include="common\animation\AnimationClip.h" />
     <ClInclude Include="common\sound\Audio.h" />
     <ClInclude Include="common\sound\studio\AudioStudio.h" />
     <ClInclude Include="common\sound\studio\AudioStudioEvent.h" />
@@ -211,6 +218,9 @@
     <ClInclude Include="common\render\ui\UIMask.h" />
     <ClInclude Include="common\render\ui\UIText.h" />
     <ClInclude Include="common\render\ui\UIButton.h" />
+    <ClInclude Include="common\common\Time.h" />
+    <ClInclude Include="common\render\mesh\SkinnedMeshRenderer.h" />
+    <ClInclude Include="common\importer\FbxLoad.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\1.png" />

@@ -144,7 +144,7 @@ void MeshRenderer::Render() {
             //设置Shader程序从纹理单元0读取颜色数据
             glUniform1i(u_texture_location, texture_index);
         }
-
+                
         glBindVertexArray(vertex_array_object_);
         {
             glDrawElements(GL_TRIANGLES, mesh_filter->GetMesh()->vertex_index_num_, GL_UNSIGNED_SHORT, 0);//使用顶点索引进行绘制，最后的0表示数据偏移量。

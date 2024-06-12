@@ -186,6 +186,21 @@
     <ClCompile Include="common\sound\Audio.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="common\common\Time.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\animation\AnimationClip.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\animation\Animation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\render\mesh\SkinnedMeshRenderer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\importer\FbxLoad.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\render\textures\Texture2D.h">
@@ -276,6 +291,21 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\sound\Audio.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\common\Time.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\animation\AnimationClip.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\animation\Animation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render\mesh\SkinnedMeshRenderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\importer\FbxLoad.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
