@@ -342,7 +342,7 @@ template <typename T> using checked_ptr = stdext::checked_array_iterator<T*>;
 template <typename T> auto make_checked(T* p, size_t size) -> checked_ptr<T> {
   return {p, size};
 }
-#else
+#else   
 template <typename T> using checked_ptr = T*;
 template <typename T> inline auto make_checked(T* p, size_t) -> T* { return p; }
 #endif

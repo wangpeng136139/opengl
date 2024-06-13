@@ -5,7 +5,7 @@
 #include <glm/ext.hpp>
 #include <iostream>
 #include <fstream>
-//#include <filesystem>
+#include <filesystem>
 
 int FbxLoad::Initialization()
 {
@@ -76,7 +76,7 @@ int FbxLoad::Initialization()
       }
 
       // 递归解析节点
-      ParseNode(mScene->GetRootNode());
+      ParseNode(mScene->GetRootNode(), mFileName);
 
       DEBUG_LOG_INFO("extra mesh success.press any key exit.");
       getchar();
@@ -85,7 +85,7 @@ int FbxLoad::Initialization()
 
 /// 递归解析节点
 /// @param pNode 节点
-void FbxLoad::ParseNode(FbxNode* pNode) {
+void FbxLoad::ParseNode(FbxNode* pNode,std::string mFileName) {
     // 获取节点属性
     FbxNodeAttribute* lNodeAttribute = pNode->GetNodeAttribute();
     if (lNodeAttribute) {
@@ -93,7 +93,7 @@ void FbxLoad::ParseNode(FbxNode* pNode) {
         if (lNodeAttribute->GetAttributeType() == FbxNodeAttribute::eMesh) {
             FbxMesh* lMesh = pNode->GetMesh();
             if (lMesh && !lMesh->GetUserDataPtr()) {
-                ParseMesh(lMesh);
+                ParseMesh(lMesh, mFileName);
             }
         }
     }
@@ -101,13 +101,13 @@ void FbxLoad::ParseNode(FbxNode* pNode) {
     // 递归解析子节点
     const int lChildCount = pNode->GetChildCount();
     for (int lChildIndex = 0; lChildIndex < lChildCount; ++lChildIndex) {
-        ParseNode(pNode->GetChild(lChildIndex));
+        ParseNode(pNode->GetChild(lChildIndex), mFileName);
     }
 }
 
 /// 解析Mesh
 /// @param pMesh Mesh 对象
-void  FbxLoad::ParseMesh(const FbxMesh* pMesh) {
+void  FbxLoad::ParseMesh(const FbxMesh* pMesh,std::string mFileName) {
     FbxNode* lNode = pMesh->GetNode();
     if (!lNode) {
         DEBUG_LOG_ERROR("Mesh has no node.");
@@ -226,14 +226,14 @@ void  FbxLoad::ParseMesh(const FbxMesh* pMesh) {
         mesh_file.vertex_[i].uv_ = glm::vec2(lUVs[i * 2], lUVs[i * 2 + 1]);
         mesh_file.vertex_[i].normal_ = glm::vec3(lNormals[i * 3], lNormals[i * 3 + 1], lNormals[i * 3 + 2]);
     }
-    // 填充索引
-    //mesh_file.index_ = lIndices;
-    //// 写入文件
-    //std::filesystem::path path(src_file_path);
-    //std::string src_file_name = path.filename().stem().string();
-    //std::string dst_file_name = fmt::format("{}_{}.mesh", src_file_name, mesh_file.head_.name_);
-    //path.replace_filename(dst_file_name);
-    //mesh_file.Write(path.string());
+    //填充索引
+    mesh_file.index_ = lIndices;
+    // 写入文件
+    filesystem::path path(mFileName);
+    std::string src_file_name = path.filename().stem().string();
+    std::string dst_file_name = fmt::format("{}_{}.mesh", src_file_name, mesh_file.head_.name_);
+    path.replace_filename(dst_file_name);
+    mesh_file.Write(path.string());
 }
 
 
