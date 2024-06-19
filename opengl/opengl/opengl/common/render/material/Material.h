@@ -1,7 +1,9 @@
-#pragma once
-#include <string>
-#include "../shader/Shader.h"
-#include "../textures/Texture2D.h";
+
+#ifndef UNTITLED_MATERIAL_MATERIAL_H
+#define UNTITLED_MATERIAL_MATERIAL_H
+#include "../shader/render_shader_head.h"
+#include "../textures/render_textures_head.h"
+
 class Material
 {
 public:
@@ -17,4 +19,4 @@ private:
 	std::vector<std::pair<std::string, float*>> uniform_matrix4fv_vec;
 	std::vector<std::pair<std::string, int>> uniform_1i_vec;
 };
-
+#endif

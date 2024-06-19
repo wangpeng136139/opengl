@@ -1,16 +1,7 @@
-//
-// Created by captain on 2021/4/5.
-// 图片加载与解析
-//
-
 #ifndef UNTITLED_TEXTURE2D_H
 #define UNTITLED_TEXTURE2D_H
 
-#define STB_IMAGE_IMPLEMENTATION
-#include <iostream>
-
-#include <glad/glad.h>
-
+#include "../../render_base_head.h"
 
 //tcp文件头
 struct TpcFileHead

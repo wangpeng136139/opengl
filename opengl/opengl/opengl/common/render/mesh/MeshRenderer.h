@@ -1,7 +1,9 @@
-#pragma once
-#include "Mesh.h"
+#ifndef UNTITLED_MESH_MESHRENDERER_H
+#define UNTITLED_MESH_MESHRENDERER_H
+
 #include "MeshFilter.h"
-#include "../material/Material.h"
+#include "../material/render_material_head.h"
+#include "../../component_head.h"
 
 class MeshRenderer:public Component
 {
@@ -36,3 +38,4 @@ private:
     unsigned int vertex_array_object_ = 0;//顶点数组对象
 };
 
+#endif

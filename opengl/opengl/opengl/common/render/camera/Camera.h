@@ -1,8 +1,10 @@
-#pragma once
-#include "glm/glm.hpp"
-#include "../../component/Component.h"
-#include <vector>
-#include <functional>
+
+#ifndef UNTITLED_CAMERA_CAMERA_H
+#define UNTITLED_CAMERA_CAMERA_H
+
+#include "../../render_base_head.h"
+#include "../../component_head.h"
+
 
 class Camera : public Component
 {
@@ -67,3 +69,4 @@ private:
     static Camera* current_camera_;
 };
 
+#endif

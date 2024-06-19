@@ -1,7 +1,9 @@
-#pragma once
-#include "../../component/Component.h"
-#include <string>
-#include <glm/glm.hpp>
+
+#ifndef UNTITLED_UI_TEXT_H
+#define UNTITLED_UI_TEXT_H
+
+#include "../../render_base_head.h"
+#include "../../component_head.h"
 
 class Font;
 class MeshRenderer;
@@ -27,3 +29,5 @@ private:
     bool dirty_;//是否变化需要重新生成Mesh
     glm::vec4 color_;//字体颜色
 };
+
+#endif

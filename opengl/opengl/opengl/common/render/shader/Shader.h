@@ -1,6 +1,8 @@
-#pragma once
-#include <string>
-#include <unordered_map>
+#ifndef UNTITLED_MESH_SHADER_H
+#define UNTITLED_MESH_SHADER_H
+
+#include "../../render_base_head.h"
+
 class Shader
 {
 public:
@@ -17,3 +19,4 @@ private:
 	static std::unordered_map<std::string, Shader*> kShaderMap;//已经创建的Shader
 };	
 
+#endif

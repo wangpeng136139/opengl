@@ -1,9 +1,9 @@
-#pragma once
-#include <string>
-#include <glad/glad.h>
-#define GLM_ENABLE_EXPERIMENTAL
-#define GLFW_INCLUDE_NONE
-#include <GLFW/glfw3.h>
+
+#ifndef UNTITLED_APPLICATION_H
+#define UNTITLED_APPLICATION_H
+
+
+#include "../engine_head.h"
 
 class Application
 {
@@ -21,3 +21,4 @@ public:
 	static GLFWwindow* glfw_window_;
 };
 
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef UNTITLED_VERTEX_VERTEX_H
+#define UNTITLED_VERTEX_VERTEX_H
 #include <glm/glm.hpp>
 struct Vertex
 {
@@ -19,5 +20,4 @@ struct Vertex
         normal_ = glm::vec3(0,0,0);
     }
 };
-
-	
+#endif

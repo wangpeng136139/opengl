@@ -1,0 +1,4 @@
+#ifndef UNTITLED_RENDER_TEXTURES_HEAD_H
+#define UNTITLED_RENDER_TEXTURES_HEAD_H
+#include "Texture2D.h"
+#endif

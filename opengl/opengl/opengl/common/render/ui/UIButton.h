@@ -1,10 +1,8 @@
 #ifndef UNTITLED_UI_BUTTON_H
 #define UNTITLED_UI_BUTTON_H
 
-#include <iostream>
-#include <string>
-#include <functional>
-#include "../../component/Component.h"
+#include "../../render_base_head.h"
+#include "../../component_head.h"
 
 class UIImage;
 class UIButton : public Component {

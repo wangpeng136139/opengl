@@ -1,0 +1,4 @@
+#ifndef UNTITLED_EVENTSYSTEM_HEAD_H
+#define UNTITLED_EVENTSYSTEM_HEAD_H
+#include "Input.h"
+#endif

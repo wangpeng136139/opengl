@@ -1,6 +1,8 @@
-#pragma once
-#include "../vertex/Vertex.h"
-#include <fstream>
+#ifndef UNTITLED_MESH_MESH_H
+#define UNTITLED_MESH_MESH_H
+
+#include "../../render_base_head.h"
+#include "../../component_head.h"
 
 //MeshÎÄ¼þÍ·
 struct MeshFileHead {
@@ -83,3 +85,4 @@ struct Mesh {
     }
 };
 
+#endif

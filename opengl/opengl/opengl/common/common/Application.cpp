@@ -1,15 +1,5 @@
 #include "Application.h"
 #include "../eventstytem/Input.h";
-#include "../component/GameObject.h";
-#include "../render/camera/Camera.h"
-#include "../render/mesh/MeshRenderer.h"
-
-
-#include <glm/glm.hpp>
-#include<glm/gtc/matrix_transform.hpp>
-#include<glm/gtx/transform2.hpp>
-#include<glm/gtx/euler_angles.hpp>
-#include <easy/profiler.h>
 #include "../common/Debug.h"
 #include "../common/Screen.h"
 #include "../renderdevice/RenderDevice.h"
@@ -65,6 +55,9 @@ static void error_callback(int error, const char* description)
     fprintf(stderr, "Error: %s\n", description);
 }
 
+/// <summary>
+/// ³õÊ¼»¯ÒýÇæ
+/// </summary>
 void Application::Init()
 {
     EASY_MAIN_THREAD;

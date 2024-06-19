@@ -219,6 +219,9 @@
     <ClCompile Include="common\rendertask\ProduceRenderTaskCompileShader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="common\rendertask\RenderTaskProducer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\render\textures\Texture2D.h">
@@ -342,6 +345,48 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\rendertask\ProduceRenderTaskCompileShader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\rendertask\RenderTaskProducer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render_base_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render\ui\render_ui_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render\shader\render_shader_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render\mesh\render_mesh_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render\material\render_material_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render\camera\render_camera_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render\font\render_font_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render\textures\render_textures_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\component\component_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\component_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\eventstytem\eventsystem_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\engine_head.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

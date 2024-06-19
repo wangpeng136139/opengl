@@ -1,8 +1,10 @@
-#pragma once
-#include <unordered_map>;
-#include <string>
-#include "../textures/Texture2D.h";
-#include "freetype/ftglyph.h"
+
+#ifndef UNTITLED_FONT_FONT_H
+#define UNTITLED_FONT_FONT_H
+
+#include "../../render_base_head.h"
+#include "../textures/render_textures_head.h"
+
 
 class Font
 {
@@ -45,4 +47,5 @@ public:
 private:
 	static std::unordered_map<std::string, Font*> font_map_;
 };
+#endif 
 

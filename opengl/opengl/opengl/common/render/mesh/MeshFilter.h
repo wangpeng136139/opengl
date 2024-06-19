@@ -1,9 +1,8 @@
-#pragma once
+#ifndef UNTITLED_MESH_MESHFILTER_H
+#define UNTITLED_MESH_MESHFILTER_H
+
 #include "Mesh.h"
-#include "../vertex/Vertex.h";
-#include <string>
-#include <vector>;
-#include "../../component/Component.h"
+
 using namespace std;
 
 class MeshFilter:public Component
@@ -30,3 +29,5 @@ private:
 	Mesh* skinned_mesh_ = nullptr;//蒙皮Mesh对象
 	VertexRelateBoneInfo* vertex_relate_bone_infos_ = nullptr;//顶点关联骨骼信息(4个骨骼索引、权重)，长度为顶点数
 };
+
+#endif

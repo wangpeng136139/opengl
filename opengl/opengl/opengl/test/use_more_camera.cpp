@@ -1,26 +1,4 @@
-#include <iostream>
-#include <glad/glad.h>
-#define GLM_ENABLE_EXPERIMENTAL
-#define GLFW_INCLUDE_NONE
-#include <GLFW/glfw3.h>
-
-#include <glm/glm.hpp>
-#include<glm/gtc/matrix_transform.hpp>
-#include<glm/gtx/transform2.hpp>
-#include<glm/gtx/euler_angles.hpp>
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <vector>
-#include "../common/render/textures/Texture2D.h"
-#include "../common/render/mesh/MeshRenderer.h"
-#include "../common/component/GameObject.h"
-#include "../common/component/Transform.h"
-#include "../common/render/camera/Camera.h"
-#include <rttr/type>
-#include <rttr/registration>
-using namespace std;
-
+#include "../common/render_head.h"
 
 using namespace std;
 

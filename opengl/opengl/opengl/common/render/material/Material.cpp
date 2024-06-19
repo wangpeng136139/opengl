@@ -1,6 +1,5 @@
 #include "Material.h"
-#include "rapidxml/rapidxml.hpp"
-#include "rapidxml/rapidxml_utils.hpp"
+
 
 void Material::Parse(std::string material_path) {
     //½âÎöxml

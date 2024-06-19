@@ -163,6 +163,7 @@
     <ClCompile Include="common\rendertask\RenderTaskQueue.cpp" />
     <ClCompile Include="common\rendertask\RenderCommand.cpp" />
     <ClCompile Include="common\rendertask\ProduceRenderTaskCompileShader.cpp" />
+    <ClCompile Include="common\rendertask\RenderTaskProducer.cpp" />
     <ClCompile Include="test\draw_cube.cpp" />
     <ClCompile Include="test\draw_cube_vertex.cpp" />
     <ClCompile Include="test\draw_cube_vertex3_3.cpp" />
@@ -195,6 +196,13 @@
   <ItemGroup>
     <ClInclude Include="common\animation\Animation.h" />
     <ClInclude Include="common\animation\AnimationClip.h" />
+    <ClInclude Include="common\component_head.h" />
+    <ClInclude Include="common\engine_head.h" />
+    <ClInclude Include="common\eventstytem\eventsystem_head.h" />
+    <ClInclude Include="common\render\camera\render_camera_head.h" />
+    <ClInclude Include="common\render\font\render_font_head.h" />
+    <ClInclude Include="common\render\mesh\render_mesh_head.h" />
+    <ClInclude Include="common\render\shader\render_shader_head.h" />
     <ClInclude Include="common\sound\Audio.h" />
     <ClInclude Include="common\sound\studio\AudioStudio.h" />
     <ClInclude Include="common\sound\studio\AudioStudioEvent.h" />
@@ -234,6 +242,13 @@
     <ClInclude Include="common\rendertask\RenderTaskQueue.h" />
     <ClInclude Include="common\rendertask\RenderCommand.h" />
     <ClInclude Include="common\rendertask\ProduceRenderTaskCompileShader.h" />
+    <ClInclude Include="common\rendertask\RenderTaskProducer.h" />
+    <ClInclude Include="common\render_base_head.h" />
+    <ClInclude Include="common\render_head.h" />
+    <ClInclude Include="common\render\ui\render_ui_head.h" />
+    <ClInclude Include="common\render\material\render_material_head.h" />
+    <ClInclude Include="common\render\textures\render_textures_head.h" />
+    <ClInclude Include="common\component\component_head.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\1.png" />

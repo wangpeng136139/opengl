@@ -1,9 +1,9 @@
 #pragma once
 #ifndef UNTITLED_UI_IMAGE_H
 #define UNTITLED_UI_IMAGE_H
-#include "../../component/Component.h"
-#include "../../render/textures/Texture2D.h";
-#include "../../component/GameObject.h"
+#include "../../render_base_head.h"
+#include "../../component_head.h"
+#include "../../render/textures/render_textures_head.h"
 class UIImage : public Component
 {
 public:

@@ -1,9 +1,5 @@
 #include "MeshFilter.h"
-#include <fstream>
-#include <iostream>
-#include "vector";
-#include <rttr/registration>
-#include "../../common/Debug.h"
+
 using namespace std;
 
 using namespace rttr;

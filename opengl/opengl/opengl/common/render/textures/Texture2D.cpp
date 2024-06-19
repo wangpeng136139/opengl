@@ -1,11 +1,6 @@
 #include "Texture2D.h"
+#define STB_IMAGE_IMPLEMENTATION	
 #include "stb/stb_image.h"
-#include <fstream>
-#include <iostream>
-#include "timetool/stopwatch.h"
-#include "../textures/Texture2D.h"
-#include "../../common/Debug.h"
-
 using namespace std;
 using namespace timetool;
 
