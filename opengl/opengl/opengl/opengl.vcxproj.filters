@@ -201,25 +201,31 @@
     <ClCompile Include="common\importer\FbxLoad.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\rendertask\Renderer.cpp">
+    <ClCompile Include="common\renderqueue\Renderer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\rendertask\GPUResourceMapper.cpp">
+    <ClCompile Include="common\renderqueue\GPUResourceMapper.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\rendertask\RenderTaskQueue.cpp">
+    <ClCompile Include="common\renderqueue\RenderTaskQueue.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\rendertask\RenderTaskBase.cpp">
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskBase.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\rendertask\RenderCommand.cpp">
+    <ClCompile Include="common\renderqueue\rendertask\RenderCommand.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\rendertask\ProduceRenderTaskCompileShader.cpp">
+    <ClCompile Include="common\renderqueue\ProduceRenderTaskCompileShader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\rendertask\RenderTaskProducer.cpp">
+    <ClCompile Include="common\renderqueue\RenderTaskProducer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskUpdateScreenSize.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\RenderTaskConsumer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -329,25 +335,25 @@
     <ClInclude Include="common\importer\FbxLoad.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\rendertask\Renderer.h">
+    <ClInclude Include="common\renderqueue\Renderer.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\rendertask\GPUResourceMapper.h">
+    <ClInclude Include="common\renderqueue\GPUResourceMapper.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\rendertask\RenderTaskQueue.h">
+    <ClInclude Include="common\renderqueue\RenderTaskQueue.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\rendertask\RenderTaskBase.h">
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\rendertask\RenderCommand.h">
+    <ClInclude Include="common\renderqueue\rendertask\RenderCommand.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\rendertask\ProduceRenderTaskCompileShader.h">
+    <ClInclude Include="common\renderqueue\ProduceRenderTaskCompileShader.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\rendertask\RenderTaskProducer.h">
+    <ClInclude Include="common\renderqueue\RenderTaskProducer.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\render_base_head.h">
@@ -387,6 +393,18 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\engine_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\base_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskUpdateScreenSize.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\rendertask_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\RenderTaskConsumer.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

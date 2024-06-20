@@ -399,7 +399,7 @@ int draw_mesh_render(void)
         glm::mat4 view = glm::lookAt(glm::vec3(0, 0, 10), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
         glm::mat4 projection = glm::perspective(glm::radians(60.f), ratio, 1.f, 1000.f);
         glm::mat4 mvp = projection * view * model;
-
+            
         meshRender->SetMVP(mvp);
         meshRender->Render();
 

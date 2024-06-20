@@ -1,4 +1,3 @@
-#pragma once
 #ifndef UNTITLED_RENDER_COMMAND_H
 #define UNTITLED_RENDER_COMMAND_H
 /// ‰÷»æ√¸¡Ó
