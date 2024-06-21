@@ -99,6 +99,42 @@ void RenderTaskConsumer::UseShaderProgram(RenderTaskBase* task_base) {
 }
 
 
+/// 删除Textures
+/// \param task_base
+void RenderTaskConsumer::DeleteTextures(RenderTaskBase* task_base) {
+	RenderTaskDeleteTextures* task = dynamic_cast<RenderTaskDeleteTextures*>(task_base);
+	//从句柄转换到纹理对象
+	GLuint* texture_id_array = new GLuint[task->texture_count_];
+	for (int i = 0; i < task->texture_count_; ++i) {
+		texture_id_array[i] = GPUResourceMapper::GetTexture(task->texture_handle_array_[i]);
+	}
+	glDeleteTextures(task->texture_count_, texture_id_array); __CHECK_GL_ERROR__
+		delete[] texture_id_array;
+}
+
+
+void RenderTaskConsumer::CreateTexImage2D(RenderTaskBase* task_base) {
+	RenderTaskCreateTexImage2D* task = dynamic_cast<RenderTaskCreateTexImage2D*>(task_base);
+
+	GLuint texture_id;
+
+	//1. 通知显卡创建纹理对象，返回句柄;
+	glGenTextures(1, &texture_id); __CHECK_GL_ERROR__
+
+		//2. 将纹理绑定到特定纹理目标;
+		glBindTexture(GL_TEXTURE_2D, texture_id); __CHECK_GL_ERROR__
+
+		//3. 将图片rgb数据上传到GPU;
+		glTexImage2D(GL_TEXTURE_2D, 0, task->gl_texture_format_, task->width_, task->height_, 0, task->client_format_, task->data_type_, task->data_); __CHECK_GL_ERROR__
+
+		//4. 指定放大，缩小滤波方式，线性滤波，即放大缩小的插值方式;
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); __CHECK_GL_ERROR__
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); __CHECK_GL_ERROR__
+
+		//将主线程中产生的纹理句柄 映射到 纹理
+		GPUResourceMapper::MapTexture(task->texture_handle_, texture_id);
+}
+
 void RenderTaskConsumer::CreateCompressedTexImage2D(RenderTaskBase* task_base) {
 	RenderTaskCreateCompressedTexImage2D* task = dynamic_cast<RenderTaskCreateCompressedTexImage2D*>(task_base);
 
@@ -172,6 +208,17 @@ void RenderTaskConsumer::CreateVAO(RenderTaskBase* task_base) {
 		GPUResourceMapper::MapVAO(task->vao_handle_, vertex_array_object);
 }
 
+/// 局部更新纹理
+/// \param task_base
+void RenderTaskConsumer::UpdateTextureSubImage2D(RenderTaskBase* task_base) {
+	RenderTaskUpdateTextureSubImage2D* task = dynamic_cast<RenderTaskUpdateTextureSubImage2D*>(task_base);
+	GLuint texture = GPUResourceMapper::GetTexture(task->texture_handle_);
+	glBindTexture(GL_TEXTURE_2D, texture); __CHECK_GL_ERROR__
+		glPixelStorei(GL_UNPACK_ALIGNMENT, 1); __CHECK_GL_ERROR__
+		glTexSubImage2D(GL_TEXTURE_2D, 0, task->x_, task->y_, task->width_, task->height_, task->client_format_, task->data_type_, task->data_); __CHECK_GL_ERROR__
+}
+  
+
 void RenderTaskConsumer::UpdateVBOSubData(RenderTaskBase* task_base) {
 	RenderTaskUpdateVBOSubData* task = dynamic_cast<RenderTaskUpdateVBOSubData*>(task_base);
 	GLuint vbo = GPUResourceMapper::GetVBO(task->vbo_handle_);
@@ -184,8 +231,93 @@ void RenderTaskConsumer::UpdateVBOSubData(RenderTaskBase* task_base) {
 	DEBUG_LOG_INFO("glBufferSubData cost {}", stopwatch.microseconds());
 }
 
+void RenderTaskConsumer::SetEnableState(RenderTaskBase* task_base) {
+	RenderTaskSetEnableState* task = dynamic_cast<RenderTaskSetEnableState*>(task_base);
+	if (task->enable_) {
+		glEnable(task->state_); __CHECK_GL_ERROR__
+	}
+	else {
+		glDisable(task->state_); __CHECK_GL_ERROR__
+	}
+}
+void RenderTaskConsumer::SetBlendFunc(RenderTaskBase* task_base) {
+	RenderTaskSetBlenderFunc* task = dynamic_cast<RenderTaskSetBlenderFunc*>(task_base);
+	glBlendFunc(task->source_blending_factor_, task->destination_blending_factor_); __CHECK_GL_ERROR__
+}
+
+void RenderTaskConsumer::SetUniformMatrix4fv(RenderTaskBase* task_base) {
+	RenderTaskSetUniformMatrix4fv* task = dynamic_cast<RenderTaskSetUniformMatrix4fv*>(task_base);
+	//上传mvp矩阵
+	GLuint shader_program = GPUResourceMapper::GetShaderProgram(task->shader_program_handle_);
+	GLint uniform_location = glGetUniformLocation(shader_program, task->uniform_name_); __CHECK_GL_ERROR__
+		glUniformMatrix4fv(uniform_location, 1, task->transpose_ ? GL_TRUE : GL_FALSE, &task->matrix_[0][0]); __CHECK_GL_ERROR__
+}
 
 
+void RenderTaskConsumer::ActiveAndBindTexture(RenderTaskBase* task_base) {
+	RenderTaskActiveAndBindTexture* task = dynamic_cast<RenderTaskActiveAndBindTexture*>(task_base);
+	//激活纹理单元
+	glActiveTexture(task->texture_uint_); __CHECK_GL_ERROR__
+		//将加载的图片纹理句柄，绑定到纹理单元0的Texture2D上。
+		GLuint texture = GPUResourceMapper::GetTexture(task->texture_handle_);
+	glBindTexture(GL_TEXTURE_2D, texture); __CHECK_GL_ERROR__
+}
+
+/// 清除
+/// \param task_base
+void RenderTaskConsumer::SetClearFlagAndClearColorBuffer(RenderTaskBase* task_base) {
+	RenderTaskClear* task = dynamic_cast<RenderTaskClear*>(task_base);
+	glClear(task->clear_flag_); __CHECK_GL_ERROR__
+		glClearColor(task->clear_color_r_, task->clear_color_g_, task->clear_color_b_, task->clear_color_a_); __CHECK_GL_ERROR__
+}
+
+
+void RenderTaskConsumer::BindVAOAndDrawElements(RenderTaskBase* task_base) {
+	RenderTaskBindVAOAndDrawElements* task = dynamic_cast<RenderTaskBindVAOAndDrawElements*>(task_base);
+	GLuint vao = GPUResourceMapper::GetVAO(task->vao_handle_);
+	glBindVertexArray(vao); __CHECK_GL_ERROR__
+	{
+		glDrawElements(GL_TRIANGLES,task->vertex_index_num_,GL_UNSIGNED_SHORT,0); __CHECK_GL_ERROR__//使用顶点索引进行绘制，最后的0表示数据偏移量。
+	}
+	glBindVertexArray(0); __CHECK_GL_ERROR__
+}
+
+
+
+void RenderTaskConsumer::SetUniform1i(RenderTaskBase* task_base) {
+	RenderTaskSetUniform1i* task = dynamic_cast<RenderTaskSetUniform1i*>(task_base);
+	//设置Shader程序从纹理单元读取颜色数据
+	GLuint shader_program = GPUResourceMapper::GetShaderProgram(task->shader_program_handle_);
+	GLint uniform_location = glGetUniformLocation(shader_program, task->uniform_name_); __CHECK_GL_ERROR__
+	glUniform1i(uniform_location, task->value_); __CHECK_GL_ERROR__
+}
+
+
+/// 设置模板测试函数
+void RenderTaskConsumer::SetStencilFunc(RenderTaskBase* task_base) {
+	RenderTaskSetStencilFunc* task = dynamic_cast<RenderTaskSetStencilFunc*>(task_base);
+	glStencilFunc(task->stencil_func_, task->stencil_ref_, task->stencil_mask_); __CHECK_GL_ERROR__
+}
+
+/// 设置模板操作
+void RenderTaskConsumer::SetStencilOp(RenderTaskBase* task_base) {
+	RenderTaskSetStencilOp* task = dynamic_cast<RenderTaskSetStencilOp*>(task_base);
+	glStencilOp(task->fail_op_, task->z_test_fail_op_, task->z_test_pass_op_); __CHECK_GL_ERROR__
+}
+
+void RenderTaskConsumer::SetStencilBufferClearValue(RenderTaskBase* task_base) {
+	RenderTaskSetStencilBufferClearValue* task = dynamic_cast<RenderTaskSetStencilBufferClearValue*>(task_base);
+	glClearStencil(task->clear_value_); __CHECK_GL_ERROR__
+}
+
+
+/// 结束一帧
+/// \param task_base
+void RenderTaskConsumer::EndFrame(RenderTaskBase* task_base) {
+	RenderTaskEndFrame* task = dynamic_cast<RenderTaskEndFrame*>(task_base);
+	glfwSwapBuffers(window_);
+	task->return_result_set_ = true;
+}
 void RenderTaskConsumer::ProcessTask()
 {
 	//渲染相关的API调用需要放到渲染线程中。
@@ -235,39 +367,65 @@ void RenderTaskConsumer::ProcessTask()
 				CreateVAO(render_task);
 				break;
 			case UPDATE_VBO_SUB_DATA:
-				
+				UpdateVBOSubData(render_task);
 				break;
 			case CREATE_COMPRESSED_TEX_IMAGE2D:
+				CreateCompressedTexImage2D(render_task);
 				break;
 			case CREATE_TEX_IMAGE2D:
+				CreateTexImage2D(render_task);
 				break;
 			case DELETE_TEXTURES:
+				DeleteTextures(render_task);
 				break;
 			case UPDATE_TEXTURE_SUB_IMAGE2D:
+				UpdateTextureSubImage2D(render_task);
 				break;
 			case SET_ENABLE_STATE:
+				SetEnableState(render_task);
 				break;
 			case SET_BLENDER_FUNC:
+				SetBlendFunc(render_task);
 				break;
 			case SET_UNIFORM_MATRIX_4FV:
+				SetUniformMatrix4fv(render_task);
 				break;
 			case ACTIVE_AND_BIND_TEXTURE:
+				ActiveAndBindTexture(render_task);
 				break;
 			case SET_UNIFORM_1I:
+				SetUniform1i(render_task);
 				break;
 			case BIND_VAO_AND_DRAW_ELEMENTS:
+				BindVAOAndDrawElements(render_task);
 				break;
 			case SET_CLEAR_FLAG_AND_CLEAR_COLOR_BUFFER:
+				SetClearFlagAndClearColorBuffer(render_task);
 				break;
 			case SET_STENCIL_FUNC:
+				SetStencilFunc(render_task);
 				break;
 			case SET_STENCIL_OP:
+				SetStencilOp(render_task);
 				break;
 			case SET_STENCIL_BUFFER_CLEAR_VALUE:
+				SetStencilBufferClearValue(render_task);
 				break;
 			case END_FRAME:
+				EndFrame(render_task);
 				break;
 			default:
+				break;
+			}
+
+			RenderTaskQueue::Pop();
+
+			//如果这个任务不需要返回参数，那么用完就删掉。
+			if (need_return_result == false) {
+				delete render_task;
+			}
+			//如果是帧结束任务，就交换缓冲区。
+			if (render_command == RenderCommand::END_FRAME) {
 				break;
 			}
 		}

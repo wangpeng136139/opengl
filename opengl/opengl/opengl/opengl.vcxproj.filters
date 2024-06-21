@@ -240,6 +240,51 @@
     <ClCompile Include="common\renderqueue\rendertask\RenderTaskUpdateVBOSubData.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskCreateTexImage2D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskDeleteTextures.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskUpdateTextureSubImage2D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskSetEnableState.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskSetBlenderFunc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskSetUniformMatrix4fv.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskActiveAndBindTexture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskSetUniform1i.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskClear.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskBindVAOAndDrawElements.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskSetStencilFunc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskSetStencilOp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskSetStencilBufferClearValue.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskEndFrame.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskNeedReturnResult.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\render\textures\Texture2D.h">
@@ -429,6 +474,51 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\renderqueue\rendertask\RenderTaskUpdateVBOSubData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskCreateTexImage2D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskDeleteTextures.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskUpdateTextureSubImage2D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskSetEnableState.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskSetBlenderFunc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskSetUniformMatrix4fv.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskActiveAndBindTexture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskSetUniform1i.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskClear.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskBindVAOAndDrawElements.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskSetStencilFunc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskSetStencilOp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskSetStencilBufferClearValue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskEndFrame.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskNeedReturnResult.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

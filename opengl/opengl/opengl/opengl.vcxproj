@@ -170,6 +170,21 @@
     <ClCompile Include="common\renderqueue\rendertask\RenderTaskCreateCompressedTexImage2D.cpp" />
     <ClCompile Include="common\renderqueue\rendertask\RenderTaskCreateVAO.cpp" />
     <ClCompile Include="common\renderqueue\rendertask\RenderTaskUpdateVBOSubData.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskCreateTexImage2D.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskDeleteTextures.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskUpdateTextureSubImage2D.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskSetEnableState.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskSetBlenderFunc.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskSetUniformMatrix4fv.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskActiveAndBindTexture.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskSetUniform1i.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskBindVAOAndDrawElements.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskClear.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskEndFrame.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskSetStencilBufferClearValue.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskSetStencilFunc.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskSetStencilOp.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskNeedReturnResult.cpp" />
     <ClCompile Include="test\draw_cube.cpp" />
     <ClCompile Include="test\draw_cube_vertex.cpp" />
     <ClCompile Include="test\draw_cube_vertex3_3.cpp" />
@@ -263,6 +278,21 @@
     <ClInclude Include="common\renderqueue\rendertask\RenderTaskCreateCompressedTexImage2D.h" />
     <ClInclude Include="common\renderqueue\rendertask\RenderTaskCreateVAO.h" />
     <ClInclude Include="common\renderqueue\rendertask\RenderTaskUpdateVBOSubData.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskCreateTexImage2D.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskDeleteTextures.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskUpdateTextureSubImage2D.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskSetEnableState.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskSetBlenderFunc.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskSetUniformMatrix4fv.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskActiveAndBindTexture.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskSetUniform1i.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskBindVAOAndDrawElements.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskClear.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskEndFrame.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskSetStencilBufferClearValue.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskSetStencilFunc.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskSetStencilOp.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskNeedReturnResult.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\1.png" />
