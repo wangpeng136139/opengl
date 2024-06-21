@@ -30,7 +30,16 @@ public:
 	/// </summary>
 	/// <param name="task_base"></param>
 	static void CreateCompressedTexImage2D(RenderTaskBase* task_base);
-
+	/// <summary>
+	/// 创建VAO
+	/// </summary>
+	/// <param name="task_base"></param>
+	/// <returns></returns>
+	static void CreateVAO(RenderTaskBase* task_base);
+	/// <summary>
+	/// 更新vbo
+	/// </summary>
+	static void UpdateVBOSubData(RenderTaskBase* task_base);
 private:
 	static GLFWwindow* window_;
 	static std::thread render_thread_;//渲染线程

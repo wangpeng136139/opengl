@@ -6,4 +6,6 @@
 #include "RenderTaskCompileShader.h"
 #include "RenderTaskUseShaderProgram.h"
 #include "RenderTaskCreateCompressedTexImage2D.h"
+#include "RenderTaskCreateVAO.h"
+#include "RenderTaskUpdateVBOSubData.h"
 #endif

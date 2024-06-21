@@ -234,6 +234,12 @@
     <ClCompile Include="common\renderqueue\rendertask\RenderTaskCreateCompressedTexImage2D.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskCreateVAO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskUpdateVBOSubData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\render\textures\Texture2D.h">
@@ -417,6 +423,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\renderqueue\rendertask\RenderTaskCreateCompressedTexImage2D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskCreateVAO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskUpdateVBOSubData.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
