@@ -1,6 +1,7 @@
 #ifndef UNTITLED_RENDERTASKBASE_H
 #define UNTITLED_RENDERTASKBASE_H
 #include "RenderCommand.h"
+#include <stdlib.h>
 class RenderTaskBase
 {
 public:

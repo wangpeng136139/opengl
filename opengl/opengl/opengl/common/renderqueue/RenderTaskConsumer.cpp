@@ -1,6 +1,8 @@
 #include "RenderTaskConsumer.h"
 #include "../render_head.h";
 #include "RenderTaskQueue.h";
+#include "../common/Screen.h"
+#include "GPUResourceMapper.h"
 
 GLFWwindow* RenderTaskConsumer::window_;
 std::thread RenderTaskConsumer::render_thread_;
@@ -17,6 +19,109 @@ void RenderTaskConsumer::Exit() {
 		render_thread_.join();//等待渲染线程结束
 	}
 }
+
+/// 更新游戏画面尺寸
+void RenderTaskConsumer::UpdateScreenSize(RenderTaskBase* task_base) {
+	RenderTaskUpdateScreenSize* task = dynamic_cast<RenderTaskUpdateScreenSize*>(task_base);
+	int width, height;
+	glfwGetFramebufferSize(window_, &width, &height);
+	glViewport(0, 0, width, height);
+	Screen::set_width_height(width, height);
+}
+
+/// 编译、链接Shader
+/// \param task_base
+void RenderTaskConsumer::CompileShader(RenderTaskBase* task_base) {
+	RenderTaskCompileShader* task = dynamic_cast<RenderTaskCompileShader*>(task_base);
+	const char* vertex_shader_text = task->vertex_shader_source_;
+	const char* fragment_shader_text = task->fragment_shader_source_;
+
+	//创建顶点Shader
+	unsigned int vertex_shader = glCreateShader(GL_VERTEX_SHADER); __CHECK_GL_ERROR__
+	//指定Shader源码
+	glShaderSource(vertex_shader, 1, &vertex_shader_text, NULL); __CHECK_GL_ERROR__
+	//编译Shader
+	glCompileShader(vertex_shader); __CHECK_GL_ERROR__
+	//获取编译结果
+	GLint compile_status = GL_FALSE;
+	glGetShaderiv(vertex_shader, GL_COMPILE_STATUS, &compile_status);
+	if (compile_status == GL_FALSE)
+	{
+		GLchar message[256];
+		glGetShaderInfoLog(vertex_shader, sizeof(message), 0, message);
+		DEBUG_LOG_ERROR("compile vertex shader error:{}", message);
+		return;
+	}
+
+	//创建片段Shader
+	unsigned int fragment_shader = glCreateShader(GL_FRAGMENT_SHADER); __CHECK_GL_ERROR__
+		//指定Shader源码
+		glShaderSource(fragment_shader, 1, &fragment_shader_text, NULL); __CHECK_GL_ERROR__
+		//编译Shader
+		glCompileShader(fragment_shader); __CHECK_GL_ERROR__
+		//获取编译结果
+		compile_status = GL_FALSE;
+	glGetShaderiv(fragment_shader, GL_COMPILE_STATUS, &compile_status);
+	if (compile_status == GL_FALSE)
+	{
+		GLchar message[256];
+		glGetShaderInfoLog(fragment_shader, sizeof(message), 0, message);
+		DEBUG_LOG_ERROR("compile fragment shader error:{}", message);
+		return;
+	}
+
+	//创建Shader程序
+	GLuint shader_program = glCreateProgram(); __CHECK_GL_ERROR__
+		//附加Shader
+		glAttachShader(shader_program, vertex_shader); __CHECK_GL_ERROR__
+		glAttachShader(shader_program, fragment_shader); __CHECK_GL_ERROR__
+		//Link
+		glLinkProgram(shader_program); __CHECK_GL_ERROR__
+		//获取编译结果
+		GLint link_status = GL_FALSE;
+	glGetProgramiv(shader_program, GL_LINK_STATUS, &link_status);
+	if (link_status == GL_FALSE)
+	{
+		GLchar message[256];
+		glGetProgramInfoLog(shader_program, sizeof(message), 0, message);
+		DEBUG_LOG_ERROR("link shader error:{}", message);
+		return;
+	}
+	//将主线程中产生的Shader程序句柄 映射到 Shader程序
+	GPUResourceMapper::MapShaderProgram(task->shader_program_handle_, shader_program);
+}
+
+
+void RenderTaskConsumer::UseShaderProgram(RenderTaskBase* task_base) {
+	RenderTaskUseShaderProgram* task = dynamic_cast<RenderTaskUseShaderProgram*>(task_base);
+	GLuint shader_program = GPUResourceMapper::GetShaderProgram(task->shader_program_handle_);
+	glUseProgram(shader_program); __CHECK_GL_ERROR__
+}
+
+
+void RenderTaskConsumer::CreateCompressedTexImage2D(RenderTaskBase* task_base) {
+	RenderTaskCreateCompressedTexImage2D* task = dynamic_cast<RenderTaskCreateCompressedTexImage2D*>(task_base);
+
+	GLuint texture_id;
+
+	//1. 通知显卡创建纹理对象，返回句柄;
+	glGenTextures(1, &texture_id); __CHECK_GL_ERROR__
+
+	//2. 将纹理绑定到特定纹理目标;
+	glBindTexture(GL_TEXTURE_2D, texture_id); __CHECK_GL_ERROR__
+	
+	//3. 将压缩纹理数据上传到GPU;
+	glCompressedTexImage2D(GL_TEXTURE_2D, 0, task->texture_format_, task->width_, task->height_, 0, task->compress_size_, task->data_);
+__CHECK_GL_ERROR__
+
+	//4. 指定放大，缩小滤波方式，线性滤波，即放大缩小的插值方式;
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); __CHECK_GL_ERROR__
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); __CHECK_GL_ERROR__
+
+	//将主线程中产生的压缩纹理句柄 映射到 纹理
+	GPUResourceMapper::MapTexture(task->texture_handle_, texture_id);
+}
+
 
 void RenderTaskConsumer::ProcessTask()
 {
@@ -55,12 +160,16 @@ void RenderTaskConsumer::ProcessTask()
 			case NONE:
 				break;
 			case UPDATE_SCREEN_SIZE:
+				UpdateScreenSize(render_task);
 				break;
 			case COMPILE_SHADER:
+				CompileShader(render_task);
 				break;
 			case USE_SHADER_PROGRAM:
+				UseShaderProgram(render_task);
 				break;
-			case CREATE_VAO:
+			case CREATE_VAO:	
+				
 				break;
 			case UPDATE_VBO_SUB_DATA:
 				break;

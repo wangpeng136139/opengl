@@ -162,10 +162,12 @@
     <ClCompile Include="common\renderqueue\rendertask\RenderTaskBase.cpp" />
     <ClCompile Include="common\renderqueue\RenderTaskQueue.cpp" />
     <ClCompile Include="common\renderqueue\rendertask\RenderCommand.cpp" />
-    <ClCompile Include="common\renderqueue\ProduceRenderTaskCompileShader.cpp" />
     <ClCompile Include="common\renderqueue\RenderTaskProducer.cpp" />
     <ClCompile Include="common\renderqueue\rendertask\RenderTaskUpdateScreenSize.cpp" />
     <ClCompile Include="common\renderqueue\RenderTaskConsumer.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskCompileShader.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskUseShaderProgram.cpp" />
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskCreateCompressedTexImage2D.cpp" />
     <ClCompile Include="test\draw_cube.cpp" />
     <ClCompile Include="test\draw_cube_vertex.cpp" />
     <ClCompile Include="test\draw_cube_vertex3_3.cpp" />
@@ -245,7 +247,6 @@
     <ClInclude Include="common\renderqueue\rendertask\RenderTaskBase.h" />
     <ClInclude Include="common\renderqueue\RenderTaskQueue.h" />
     <ClInclude Include="common\renderqueue\rendertask\RenderCommand.h" />
-    <ClInclude Include="common\renderqueue\ProduceRenderTaskCompileShader.h" />
     <ClInclude Include="common\renderqueue\RenderTaskProducer.h" />
     <ClInclude Include="common\render_base_head.h" />
     <ClInclude Include="common\render_head.h" />
@@ -255,6 +256,9 @@
     <ClInclude Include="common\component\component_head.h" />
     <ClInclude Include="common\renderqueue\rendertask\RenderTaskUpdateScreenSize.h" />
     <ClInclude Include="common\renderqueue\RenderTaskConsumer.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskCompileShader.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskUseShaderProgram.h" />
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskCreateCompressedTexImage2D.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\1.png" />

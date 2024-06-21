@@ -216,9 +216,6 @@
     <ClCompile Include="common\renderqueue\rendertask\RenderCommand.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="common\renderqueue\ProduceRenderTaskCompileShader.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="common\renderqueue\RenderTaskProducer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -226,6 +223,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="common\renderqueue\RenderTaskConsumer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskCompileShader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskUseShaderProgram.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="common\renderqueue\rendertask\RenderTaskCreateCompressedTexImage2D.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -350,9 +356,6 @@
     <ClInclude Include="common\renderqueue\rendertask\RenderCommand.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\renderqueue\ProduceRenderTaskCompileShader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="common\renderqueue\RenderTaskProducer.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -405,6 +408,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\renderqueue\RenderTaskConsumer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskCompileShader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskUseShaderProgram.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\renderqueue\rendertask\RenderTaskCreateCompressedTexImage2D.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

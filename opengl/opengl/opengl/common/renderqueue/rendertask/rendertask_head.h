@@ -3,4 +3,7 @@
 #include "RenderCommand.h"
 #include "RenderTaskBase.h"
 #include "RenderTaskUpdateScreenSize.h"
+#include "RenderTaskCompileShader.h"
+#include "RenderTaskUseShaderProgram.h"
+#include "RenderTaskCreateCompressedTexImage2D.h"
 #endif
