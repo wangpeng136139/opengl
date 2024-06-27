@@ -1,5 +1,6 @@
-#pragma once
 
+#ifndef UNTITLED_GAME_COMPONENT_H
+#define UNTITLED_GAME_COMPONENT_H
 class GameObject;
 class Component {
 public:
@@ -25,3 +26,4 @@ private:
     bool active_;//ÊÇ·ñ¼¤»î
     GameObject* game_object_;
 };
+#endif

@@ -3,7 +3,6 @@
 
 #include "MeshFilter.h"
 #include "../material/render_material_head.h"
-#include "../../component_head.h"
 
 class MeshRenderer:public Component
 {

@@ -1,7 +1,8 @@
 
 #include "GameObject.h"
-#include "Component.h"
 #include <rttr/registration>
+#include "Component.h"
+
 using namespace rttr;   
 
 std::list<GameObject*> GameObject::game_object_list_;
@@ -18,22 +19,6 @@ GameObject::~GameObject() {
 
 }
 
-template <class T>
-T* GameObject::AddComponent() {
-    T* component = new T();
-    rttr::type t = rttr::type::get(*component);
-    std::string component_type_name = t.get_name().to_string();
-    component->set_game_object(this);
-    if (component_type_instance_map_.find(component_type_name) == component_type_instance_map_.end()) {
-        std::vector<Component*> component_vec;
-        component_vec.push_back(component);
-        component_type_instance_map_[component_type_name] = component_vec;
-    }
-    else {
-        component_type_instance_map_[component_type_name].push_back(component);
-    }
-    return component;
-}
 
 Component* GameObject::AddComponent(std::string component_type_name) {
     type t = type::get_by_name(component_type_name.c_str());
@@ -71,12 +56,47 @@ void GameObject::ForeachComponent(std::function<void(Component* component)> func
     }
 }
 
+
+
 void GameObject::Foreach(std::function<void(GameObject* game_object)> func) {
     for (auto iter = game_object_list_.begin(); iter != game_object_list_.end(); iter++) {
         auto game_object = *iter;
         func(game_object);
     }
 }
+
+
+
+/// 添加组件，仅用于C++中添加组件。
+/// \tparam T 组件类型
+/// \return 组件实例
+template <class T>
+T* GameObject::AddComponent() {
+    T* component = new T();
+    AttachComponent(component);
+    component->Awake();
+    return dynamic_cast<T*>(component);
+}
+
+/// 附加组件实例
+/// \param component_instance_table
+void GameObject::AttachComponent(Component* component)
+{
+    component->set_game_object(this);
+    //获取类名
+    type t = type::get(*component);
+    std::string component_type_name = t.get_name().to_string();
+
+    if (component_type_instance_map_.find(component_type_name) == component_type_instance_map_.end()) {
+        std::vector<Component*> component_vec;
+        component_vec.push_back(component);
+        component_type_instance_map_[component_type_name] = component_vec;
+    }
+    else {
+        component_type_instance_map_[component_type_name].push_back(component);
+    }
+}
+
 
 
 

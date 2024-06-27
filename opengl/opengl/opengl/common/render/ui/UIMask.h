@@ -2,10 +2,10 @@
 #ifndef UNTITLED_UI_MASK_H
 #define UNTITLED_UI_MASK_H
 
-#include "../../render_base_head.h"
-#include "../../component_head.h"
+#include "include_common.h"
 
 class Texture2D;
+class Component;
 class UIMask : public Component {
 public:
     UIMask();

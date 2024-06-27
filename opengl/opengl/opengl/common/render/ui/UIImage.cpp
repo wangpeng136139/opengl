@@ -7,6 +7,7 @@
 #include <rttr/registration>
 
 using namespace rttr;
+
 RTTR_REGISTRATION{
     registration::class_<UIImage>("UIImage")
             .constructor<>()(rttr::policy::ctor::as_raw_ptr);

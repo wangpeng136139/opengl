@@ -2,7 +2,7 @@
 #define UNTITLED_MESH_MESH_H
 
 #include "../../render_base_head.h"
-#include "../../component_head.h"
+#include "../../component/Component.h"
 
 //MeshÎÄ¼şÍ·
 struct MeshFileHead {

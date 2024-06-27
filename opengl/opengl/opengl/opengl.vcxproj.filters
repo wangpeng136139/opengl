@@ -449,9 +449,6 @@
     <ClInclude Include="common\engine_head.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="common\base_head.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="common\renderqueue\rendertask\RenderTaskUpdateScreenSize.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -519,6 +516,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="common\renderqueue\rendertask\RenderTaskNeedReturnResult.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\common\common_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="common\render\ui\include_common.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

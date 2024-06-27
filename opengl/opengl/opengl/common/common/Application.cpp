@@ -1,12 +1,16 @@
 #include "Application.h"
+#include "../render_head.h"
 #include "../eventstytem/Input.h";
 #include "../common/Debug.h"
 #include "../common/Screen.h"
+#include "../common/Time.h"
 #include "../renderdevice/RenderDevice.h"
 #include "../renderdevice/RenderDeviceOpenGL.h"
 #include "../sound/Audio.h"
+#include "../renderqueue/RenderTaskConsumer.h"
+#include "../renderqueue/RenderTaskProducer.h"
 
-
+class RenderTaskConsumer;
 std::string Application::app_data_;
 std::string Application::streammingAssetPath;
 GLFWwindow* Application::glfw_window_;
@@ -88,20 +92,24 @@ void Application::Init()
     glfwMakeContextCurrent(glfw_window_);
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 
-    UpdateScreenSize();
-    glfwSwapInterval(1);
+
+
+ 
 
     glfwSetKeyCallback(glfw_window_, key_callback);
     glfwSetMouseButtonCallback(glfw_window_, mouse_button_callback);
     glfwSetScrollCallback(glfw_window_, mouse_scroll_callback);
     glfwSetCursorPosCallback(glfw_window_, mouse_move_callback);
+    //初始化渲染任务消费者(单独渲染线程)
+    RenderTaskConsumer::Init(glfw_window_);
+
+    UpdateScreenSize();
+    //音效初始化
+    Audio::Init();
 }
 
 void Application::UpdateScreenSize() {
-    int width, height;
-    glfwGetFramebufferSize(glfw_window_, &width, &height);
-    glViewport(0, 0, width, height);
-    Screen::set_width_height(width, height);
+    RenderTaskProducer::ProduceRenderTaskUpdateScreenSize();
 }
 
 
@@ -126,6 +134,8 @@ void Application::Run()
         EASY_END_BLOCK
     }
    }
+
+    RenderTaskConsumer::Exit();
     glfwDestroyWindow(glfw_window_);
 
     glfwTerminate();
@@ -159,6 +169,7 @@ void Application::Render()
 void Application::Update()
 {
     EASY_FUNCTION(profiler::colors::Magenta); // 标记函数
+    Time::Update();
     UpdateScreenSize();
 
     GameObject::Foreach([](GameObject* game_object) {

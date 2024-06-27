@@ -1,8 +1,7 @@
-#pragma once
+#ifndef UNTITLED_TRANSFORM_H
+#define UNTITLED_TRANSFORM_H
 #include "glm/glm.hpp"
 #include "Component.h"
-
-
 class Transform : public Component {
 public:
     Transform();
@@ -18,3 +17,5 @@ private:
     glm::vec3 rotation_;
     glm::vec3 scale_;
 };
+
+#endif

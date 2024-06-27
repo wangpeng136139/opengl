@@ -3,6 +3,7 @@
 
 #include <thread>
 #include "rendertask/rendertask_head.h"
+
 class GLFWwindow;
 
 class RenderTaskConsumer

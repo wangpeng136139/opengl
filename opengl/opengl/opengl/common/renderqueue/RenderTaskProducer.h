@@ -66,7 +66,7 @@ public:
 	/// <summary>
 	/// 设置clear_flag并且清除颜色缓冲
 	/// </summary>
-	static void ProduceRenderTaskSetClearFlagAndClearColorBuffer();
+	static void ProduceRenderTaskSetClearFlagAndClearColorBuffer(unsigned int clear_flag, float clear_color_r, float clear_color_g, float clear_color_b, float clear_color_a);
 	/// <summary>
 	/// 设置模板测试函数
 	/// </summary>

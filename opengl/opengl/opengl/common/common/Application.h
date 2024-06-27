@@ -2,8 +2,12 @@
 #ifndef UNTITLED_APPLICATION_H
 #define UNTITLED_APPLICATION_H
 
+#include <string>
+#include <iostream>
 
-#include "../engine_head.h"
+class GLFWwindow;
+class RenderTaskConsumer;
+
 
 class Application
 {

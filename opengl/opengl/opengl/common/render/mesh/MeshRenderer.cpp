@@ -1,6 +1,4 @@
 #include "MeshRenderer.h"
-#include "../../component/Transform.h"
-#include "../../component/GameObject.h"
 #include <rttr/registration>
 #include "../camera/Camera.h"
 
@@ -49,11 +47,8 @@ void MeshRenderer::Render() {
     if (current_camera == nullptr) {
         return;
     }
-
-    auto culling_mask = current_camera->culling_mask();
-    auto gameobject_layer = game_object()->layer();
     //判断相机的 culling_mask 是否包含当前物体 layer
-    if ((culling_mask & gameobject_layer) == 0x00) {
+    if ((current_camera->culling_mask() & game_object()->layer()) == 0x00) {
         return;
     }
 
@@ -62,7 +57,7 @@ void MeshRenderer::Render() {
     glm::mat4 projection = current_camera->projection_mat4();
 
     //主动获取 Transform 组件，计算mvp。
-    auto component_transform = game_object()->GetComponent("Transform");
+    auto component_transform = game_object()->GetComponent<Transform>();
     auto transform = dynamic_cast<Transform*>(component_transform);
     if (!transform) {
         return;

@@ -217,7 +217,7 @@
   <ItemGroup>
     <ClInclude Include="common\animation\Animation.h" />
     <ClInclude Include="common\animation\AnimationClip.h" />
-    <ClInclude Include="common\base_head.h" />
+    <ClInclude Include="common\common\common_head.h" />
     <ClInclude Include="common\component_head.h" />
     <ClInclude Include="common\engine_head.h" />
     <ClInclude Include="common\eventstytem\eventsystem_head.h" />
@@ -226,6 +226,7 @@
     <ClInclude Include="common\render\font\render_font_head.h" />
     <ClInclude Include="common\render\mesh\render_mesh_head.h" />
     <ClInclude Include="common\render\shader\render_shader_head.h" />
+    <ClInclude Include="common\render\ui\include_common.h" />
     <ClInclude Include="common\sound\Audio.h" />
     <ClInclude Include="common\sound\studio\AudioStudio.h" />
     <ClInclude Include="common\sound\studio\AudioStudioEvent.h" />

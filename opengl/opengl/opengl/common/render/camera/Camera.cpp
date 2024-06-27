@@ -4,6 +4,7 @@
 #include "../../component/GameObject.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/glm.hpp>
+#include "../../renderqueue/RenderTaskProducer.h"
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include<glm/gtx/transform2.hpp>
@@ -70,6 +71,6 @@ void Camera::SetProjection(float fovDegrees, float aspectRatio, float nearClip, 
 }
 
 void Camera::Clear() {
-    glClear(clear_flag_);
-    glClearColor(clear_color_.r, clear_color_.g, clear_color_.b, clear_color_.a);
+    RenderTaskProducer::ProduceRenderTaskSetClearFlagAndClearColorBuffer(clear_flag_, clear_color_.r, clear_color_.g,
+        clear_color_.b, clear_color_.a);
 }

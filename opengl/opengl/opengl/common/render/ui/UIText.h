@@ -2,11 +2,11 @@
 #ifndef UNTITLED_UI_TEXT_H
 #define UNTITLED_UI_TEXT_H
 
-#include "../../render_base_head.h"
-#include "../../component_head.h"
+#include "include_common.h"
 
 class Font;
 class MeshRenderer;
+class Component;
 
 class UIText : public Component {
 public:
