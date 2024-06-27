@@ -96,3 +96,37 @@ void RenderTaskProducer::ProduceRenderTaskBindVAOAndDrawElements(unsigned int va
     task->vertex_index_num_ = vertex_index_num;
     RenderTaskQueue::Push(task);
 }
+
+void RenderTaskProducer::ProduceRenderTaskCreateCompressedTexImage2D(unsigned int texture_handle, int width,
+    int height, unsigned int texture_format,
+    unsigned int compress_size,
+    unsigned char* data) {
+    RenderTaskCreateCompressedTexImage2D* task = new RenderTaskCreateCompressedTexImage2D();
+    task->texture_handle_ = texture_handle;
+    task->width_ = width;
+    task->height_ = height;
+    task->texture_format_ = texture_format;
+    task->compress_size_ = compress_size;
+    //拷贝数据
+    task->data_ = static_cast<unsigned char*>(malloc(compress_size));
+    memcpy(task->data_, data, compress_size);
+    RenderTaskQueue::Push(task);
+}
+
+
+void RenderTaskProducer::ProduceRenderTaskCreateTexImage2D(unsigned int texture_handle, int width, int height,
+    unsigned int gl_texture_format, unsigned int client_format,
+    unsigned int data_type, unsigned int data_size,
+    unsigned char* data) {
+    RenderTaskCreateTexImage2D* task = new RenderTaskCreateTexImage2D();
+    task->texture_handle_ = texture_handle;
+    task->width_ = width;
+    task->height_ = height;
+    task->gl_texture_format_ = gl_texture_format;
+    task->client_format_ = client_format;
+    task->data_type_ = data_type;
+    //拷贝数据
+    task->data_ = static_cast<unsigned char*>(malloc(data_size));
+    memcpy(task->data_, data, data_size);
+    RenderTaskQueue::Push(task);
+}

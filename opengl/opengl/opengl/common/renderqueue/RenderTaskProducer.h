@@ -19,11 +19,17 @@ public:
 	/// <summary>
 	/// Ñ¹ËõÌùÍ¼
 	/// </summary>
-	static void ProduceRenderTaskCreateCompressedTexImage2D();
+	static void ProduceRenderTaskCreateCompressedTexImage2D(unsigned int texture_handle, int width,
+		int height, unsigned int texture_format,
+		unsigned int compress_size,
+		unsigned char* data);
 	/// <summary>
 	/// ´´½¨ÎÆÀí
 	/// </summary>
-	static void ProduceRenderTaskCreateTexImage2D();
+	static void ProduceRenderTaskCreateTexImage2D(unsigned int texture_handle, int width, int height,
+		unsigned int gl_texture_format, unsigned int client_format,
+		unsigned int data_type, unsigned int data_size,
+		unsigned char* data);
 	/// <summary>
 	/// É¾³ıÌùÍ¼
 	/// </summary>

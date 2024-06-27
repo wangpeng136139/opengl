@@ -26,8 +26,7 @@ public:
     int height(){return height_;}
 
 public:
-    static Texture2D* LoadFromFile(std::string& image_file_path);//加载一个图片文件
-    static Texture2D* LoadFromFileTpc(std::string& image_file_path);
+    static Texture2D* LoadFromFile(std::string& image_file_path);
     static void CompressImageFile(std::string& image_file_path  , std::string& save_image_file_path);
     static Texture2D* Create(unsigned short width, unsigned short height, unsigned int server_format, unsigned int client_format,
         unsigned int data_type, unsigned char* data);     
@@ -37,7 +36,6 @@ public:
     int height_;
     GLenum gl_texture_format_;
     unsigned int texture_handle_;//纹理ID
-    unsigned int gl_texture_id_;
 };
 
 #endif //UNTITLED_TEXTURE2D_H
