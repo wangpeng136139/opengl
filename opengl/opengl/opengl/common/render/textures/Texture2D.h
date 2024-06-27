@@ -32,11 +32,12 @@ public:
     static Texture2D* Create(unsigned short width, unsigned short height, unsigned int server_format, unsigned int client_format,
         unsigned int data_type, unsigned char* data);     
 public:
+    int mipmap_level_;
     int width_;
     int height_;
-    GLuint gl_texture_id_;//Œ∆¿ÌID
-    GLenum gl_texture_format_;//Œ∆¿ÌID
-    int mipmap_level_ = 0;
+    GLenum gl_texture_format_;
+    unsigned int texture_handle_;//Œ∆¿ÌID
+    unsigned int gl_texture_id_;
 };
 
 #endif //UNTITLED_TEXTURE2D_H

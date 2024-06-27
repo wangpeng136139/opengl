@@ -1,5 +1,5 @@
 #include "../common/render_head.h"
-
+#include "../common/render/mesh/TestMeshRenderer.h"
 using namespace std;
 
 //顶点
@@ -353,10 +353,10 @@ void CreateTexturem_use_font(std::string image_file_path)
     texture2d_use_font = Texture2D::LoadFromFileTpc(image_file_path);
 }
 
-std::vector<MeshRenderer *> CreateFont_use_font()
+std::vector<TestMeshRenderer*> CreateFont_use_font()
 {
     //生成文字贴图
-    std::vector<MeshRenderer*> vec;
+    std::vector<TestMeshRenderer*> vec;
     Font* font = Font::LoadFromFile("resources/font/SOURCEHANSANSCN-HEAVY.OTF", 20);
     std::string str = "Captain";
     std::vector<Font::Character*> character_vec=font->LoadStr(str);
@@ -388,7 +388,7 @@ std::vector<MeshRenderer *> CreateFont_use_font()
         auto material = new Material();//设置材质
         material->Parse("resources/material/font.mat");
         //挂上 MeshRenderer 组件
-        auto mesh_renderer = dynamic_cast<MeshRenderer*>(go->AddComponent("MeshRenderer"));
+        auto mesh_renderer = dynamic_cast<TestMeshRenderer*>(go->AddComponent("MeshRenderer"));
         mesh_renderer->SetMaterial(material);
         mesh_renderer->SetMeshFilter(mesh_filter);
 
@@ -421,7 +421,7 @@ int draw_use_font(void)
     mesh_load_use_font->LoadMesh("resources/mesh/cube.mesh");
 
 
-    MeshRenderer* meshRender = dynamic_cast<MeshRenderer*>(obj->AddComponent("MeshRenderer"));
+    TestMeshRenderer* meshRender = dynamic_cast<TestMeshRenderer*>(obj->AddComponent("MeshRenderer"));
     meshRender->SetMaterial(material);
     meshRender->SetMeshFilter(mesh_load_use_font);
 

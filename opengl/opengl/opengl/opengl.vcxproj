@@ -136,6 +136,7 @@
     <ClCompile Include="..\..\glad\glad.c" />
     <ClCompile Include="common\animation\Animation.cpp" />
     <ClCompile Include="common\animation\AnimationClip.cpp" />
+    <ClCompile Include="common\render\mesh\TestMeshRenderer.cpp" />
     <ClCompile Include="common\sound\Audio.cpp" />
     <ClCompile Include="common\sound\studio\AudioStudio.cpp" />
     <ClCompile Include="common\sound\studio\AudioStudioEvent.cpp" />
@@ -225,6 +226,7 @@
     <ClInclude Include="common\render\camera\render_camera_head.h" />
     <ClInclude Include="common\render\font\render_font_head.h" />
     <ClInclude Include="common\render\mesh\render_mesh_head.h" />
+    <ClInclude Include="common\render\mesh\TestMeshRenderer.h" />
     <ClInclude Include="common\render\shader\render_shader_head.h" />
     <ClInclude Include="common\render\ui\include_common.h" />
     <ClInclude Include="common\sound\Audio.h" />

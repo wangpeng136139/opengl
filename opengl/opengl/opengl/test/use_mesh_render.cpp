@@ -1,4 +1,5 @@
 #include "../common/engine_head.h"
+#include "../common/render/mesh/TestMeshRenderer.h"
 using namespace std;
 
 
@@ -372,7 +373,7 @@ int draw_mesh_render(void)
     mesh_load_mesh_render->LoadMesh("resources/mesh/cube.mesh");
 
 
-    MeshRenderer * meshRender = new MeshRenderer();
+    TestMeshRenderer* meshRender = new TestMeshRenderer();
     meshRender->SetMaterial(material);
     meshRender->SetMeshFilter(mesh_load_mesh_render);
 

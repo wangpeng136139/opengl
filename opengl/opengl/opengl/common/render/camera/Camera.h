@@ -51,6 +51,12 @@ public:
     void set_depth(unsigned char depth);
 
     unsigned char depth(){return depth_;}
+    /// 相机用于
+    enum CameraUseFor {
+        UI,
+        SCENE
+    };
+    CameraUseFor camera_use_for() { return camera_use_for_; }
 public:
     static void Sort();
     /// 遍历all_camera_时，轮到的那个Camera。
@@ -64,6 +70,7 @@ private:
 	unsigned int clear_flag_;//刷新数据标志
     unsigned char depth_;//排序深度
     unsigned char culling_mask_;//剔除
+    CameraUseFor camera_use_for_ = CameraUseFor::SCENE;
 private:
     static std::vector<Camera*> all_camera_;
     static Camera* current_camera_;

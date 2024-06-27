@@ -3,7 +3,8 @@
 
 #include "rendertask/rendertask_head.h";
 #include "RenderTaskQueue.h"
-
+#include <string.h>
+#include "../render/mesh/Mesh.h"
 class RenderTaskProducer
 {
 public:
@@ -34,35 +35,42 @@ public:
 	/// <summary>
 	/// 创建vao
 	/// </summary>
-	static void ProduceRenderTaskCreateVAO();
+	static void ProduceRenderTaskCreateVAO(unsigned int shader_program_handle, unsigned int vao_handle, unsigned int vbo_handle, unsigned int vertex_data_size, unsigned int vertex_data_stride, void* vertex_data, unsigned int vertex_index_data_size, void* vertex_index_data);
 	/// <summary>
 	/// 创建vbo
 	/// </summary>
-	static void ProduceRenderTaskUpdateVBOSubData();
-	/// <summary>
-	/// 设置状态,开启或关闭
-	/// </summary>
-	static void ProduceRenderTaskSetEnableState();
-	/// <summary>
-	/// 设置混合函数
-	/// </summary>
-	static void ProduceRenderTaskSetBlenderFunc();
-	/// <summary>
-	/// 设置4x4矩阵
-	/// </summary>
-	static void ProduceRenderTaskSetUniformMatrix4fv();
-	/// <summary>
+	static void ProduceRenderTaskUpdateVBOSubData(unsigned int vbo_handle, unsigned int vertex_data_size, void* vertex_data);
+	/// 发出任务：设置状态,开启或关闭
+	static void ProduceRenderTaskSetEnableState(unsigned int state, bool enable);
+
+	/// 发出任务：设置混合函数
+	/// \param source_blending_factor 源混合因子
+	/// \param destination_blending_factor 目标混合因子
+	static void ProduceRenderTaskSetBlenderFunc(unsigned int source_blending_factor, unsigned int destination_blending_factor);
+	/// 发出任务：设置4x4矩阵
+	 /// \param shader_program_handle
+	 /// \param uniform_name
+	 /// \param transpose
+	 /// \param value
+	 /// \param value_data_size
+	static void ProduceRenderTaskSetUniformMatrix4fv(unsigned int shader_program_handle, const char* uniform_name, bool transpose, glm::mat4& matrix);
+
 	/// 激活并绑定纹理
-	/// </summary>
-	static void ProduceRenderTaskActiveAndBindTexture();
-	/// <summary>
+	/// \param texture_uint
+	/// \param texture_handle
+	static void ProduceRenderTaskActiveAndBindTexture(unsigned int texture_uint, unsigned int texture_handle);
+
 	/// 上传1个int值
-	/// </summary>
-	static void ProduceRenderTaskSetUniform1i();
-	/// <summary>
+	/// \param shader_program_handle
+	/// \param uniform_name
+	/// \param value
+	static void ProduceRenderTaskSetUniform1i(unsigned int shader_program_handle, const char* uniform_name, int value);
+
 	/// 绑定VAO并绘制
-	/// </summary>
-	static void ProduceRenderTaskBindVAOAndDrawElements();
+	/// \param vao_handle
+	/// \param inex_count
+	static void ProduceRenderTaskBindVAOAndDrawElements(unsigned int vao_handle, unsigned int vertex_index_num);
+
 	/// <summary>
 	/// 设置clear_flag并且清除颜色缓冲
 	/// </summary>

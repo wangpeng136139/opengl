@@ -1,4 +1,5 @@
 #include "../common/engine_head.h"
+#include "../common/render/mesh/TestMeshRenderer.h"
 using namespace std;
 using namespace glm;
 
@@ -375,7 +376,7 @@ int draw_use_mesh_render_gameobject(void)
     mesh_load_use_mesh_render_gameobject->LoadMesh("resources/mesh/cube.mesh");
 
 
-    MeshRenderer * meshRender  = dynamic_cast<MeshRenderer*>(obj->AddComponent("MeshRenderer"));
+    TestMeshRenderer* meshRender  = dynamic_cast<TestMeshRenderer*>(obj->AddComponent("MeshRenderer"));
     meshRender->SetMaterial(material);
     meshRender->SetMeshFilter(mesh_load_use_mesh_render_gameobject);
 

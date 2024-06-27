@@ -1,7 +1,7 @@
 #include "../common/render_head.h"
 #include "../common/eventstytem/Input.h";
 #include "../common/eventstytem/key_code.h"
-
+#include "../common/render/mesh/TestMeshRenderer.h"
 
 using namespace std;
 using namespace glm;
@@ -179,7 +179,7 @@ int draw_use_key_mouse_control(void)
     mesh_load_use_key_mouse_control->LoadMesh("resources/mesh/cube.mesh");
 
 
-    MeshRenderer* meshRender = dynamic_cast<MeshRenderer*>(obj->AddComponent("MeshRenderer"));
+    TestMeshRenderer* meshRender = dynamic_cast<TestMeshRenderer*>(obj->AddComponent("MeshRenderer"));
     meshRender->SetMaterial(material);
     meshRender->SetMeshFilter(mesh_load_use_key_mouse_control);
 

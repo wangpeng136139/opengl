@@ -1,5 +1,5 @@
 #include "../common/render_head.h"
-
+#include "../common/render/mesh/TestMeshRenderer.h"
 using namespace std;
 
 //¶¥µã
@@ -306,7 +306,7 @@ int draw_use_more_camera(void)
     mesh_filter->LoadMesh("resources/mesh/cube.mesh");
 
 
-    MeshRenderer* meshRender = dynamic_cast<MeshRenderer*>(obj->AddComponent("MeshRenderer"));
+    TestMeshRenderer* meshRender = dynamic_cast<TestMeshRenderer*>(obj->AddComponent("MeshRenderer"));
     meshRender->SetMaterial(material);
     meshRender->SetMeshFilter(mesh_filter);
 
